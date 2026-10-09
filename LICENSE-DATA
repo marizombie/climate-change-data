@@ -1,0 +1,21 @@
+Data and text in this repository are licensed under
+Creative Commons Attribution 4.0 International (CC BY 4.0).
+
+You are free to share and adapt the material for any purpose, including
+commercially, provided you give appropriate credit, link to the licence, and
+indicate if changes were made.
+
+Full text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+This licence covers: data/*.csv, data/*.xlsx, figures/*.png, README.md,
+docs/*.md and site/index.html. Source code under scripts/ is MIT (see LICENSE).
+
+Third-party data
+----------------
+Temperature data is ERA5 reanalysis from the Copernicus Climate Change Service
+(C3S), retrieved through the Open-Meteo archive API. ERA5 is published under
+the Copernicus licence; see https://cds.climate.copernicus.eu/ and
+https://open-meteo.com/ for their terms. Neither C3S nor Open-Meteo endorses
+this analysis.
+
+Bibliographic counts are derived from OpenAlex (CC0).

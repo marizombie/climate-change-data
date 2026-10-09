@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+title: "Where climate monitoring stops watching"
+message: "If you use this dataset or analysis, please cite it."
+type: dataset
+abstract: >-
+  An inventory of 46 operational digital climate-monitoring systems scored on
+  whether their output is coupled to any actuator, a 15-stage map of gaps in
+  the emission-to-harm chain, heat exposure indicators for twelve southern
+  European cities from ERA5 reanalysis 1950-2025, and twelve costed
+  interventions ranked by deployment burden.
+keywords:
+  - climate monitoring
+  - urban heat
+  - heat mortality
+  - climate adaptation
+  - ERA5
+  - southern Europe
+license: CC-BY-4.0
+date-released: "2026-10-09"
+version: "1.0.0"
+authors:
+  - name: "climate-heat-monitoring contributors"
+references:
+  - type: data
+    title: "ERA5 hourly data on single levels"
+    publisher:
+      name: "Copernicus Climate Change Service (C3S) Climate Data Store"
+    notes: "Accessed via the Open-Meteo archive API"
+  - type: database
+    title: "OpenAlex"
+    publisher:
+      name: "OurResearch"

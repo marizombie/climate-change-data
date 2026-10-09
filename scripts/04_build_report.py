@@ -1,0 +1,217 @@
+import pandas as pd, numpy as np, html as H
+
+ART = {  # artifact_id for {{artifact:art_...}} markers
+ "what_changed":"d7322787-7884-40b5-a9d2-f79bb806f72f",
+ "landscape":"32a38fbc-4bcf-4e9f-b84d-a8cf78aad34a",
+ "harm":"23a7c9a5-ba9a-40b6-84a8-c91410c7237e",
+ "heat":"9899215b-ea35-4b97-98b0-599dc7de19a3",
+ "ease":"89f64e48-8598-4ba6-ac95-b3619138afa5",
+ "cost":"2d0fb790-deb3-41d5-99f1-75131c55ca85",
+}
+FILES = {  # filenames for static-site / repo builds
+ "what_changed":"what_changed.png", "landscape":"monitoring_landscape.png",
+ "harm":"how_heat_harms.png", "heat":"heat_exposure_figure.png",
+ "ease":"actions_by_ease.png", "cost":"solution_cost_impact.png",
+}
+MODE = {"v": "artifact"}   # "artifact" for in-app rendering, "relative" for repo/site
+
+def img(k, cap):
+    src = (f"{{{{artifact:art_{ART[k]}}}}}" if MODE["v"] == "artifact"
+           else f"figures/{FILES[k]}")
+    return (f'<figure><img src="{src}" alt="{H.escape(cap)}">'
+            f'<figcaption>{cap}</figcaption></figure>')
+
+def table(df, idx=False, cls=""):
+    return df.to_html(index=idx, classes=f"tbl {cls}", border=0, escape=True,
+                      na_rep="—", float_format=lambda v: f"{v:,.2f}".rstrip("0").rstrip("."))
+
+def build(d, counts):
+    inv, gm, sol, ez, tr, dec, acc, lit, cost = (d[k] for k in
+        ["inv","gm","sol","ez","tr","dec","acc","lit","cost"])
+    P = []
+    A = P.append
+    A(f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>Digital climate monitoring — consolidated data report</title><style>
+:root{{--ink:#1a1a1a;--mut:#5a5a5a;--line:#e3e3e3;--red:#b3261e;--amb:#d08c1c;--grn:#1a7f37}}
+*{{box-sizing:border-box}}
+body{{font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+color:var(--ink);max-width:1120px;margin:0 auto;padding:40px 28px 90px}}
+h1{{font-size:30px;line-height:1.25;margin:0 0 6px;letter-spacing:-.4px}}
+h2{{font-size:21px;margin:46px 0 8px;padding-top:18px;border-top:2px solid var(--ink)}}
+h3{{font-size:16px;margin:28px 0 6px;color:#2a2a2a}}
+.sub{{color:var(--mut);font-size:14px;margin:0 0 26px}}
+p{{margin:10px 0}}
+figure{{margin:22px 0}} figure img{{width:100%;border:1px solid var(--line);border-radius:5px}}
+figcaption{{font-size:12.5px;color:var(--mut);margin-top:7px;line-height:1.5}}
+table.tbl{{border-collapse:collapse;width:100%;font-size:12.5px;margin:12px 0 6px}}
+.tbl th{{text-align:left;background:#f4f4f4;padding:7px 9px;border-bottom:2px solid #d5d5d5;
+font-weight:600;vertical-align:bottom}}
+.tbl td{{padding:6px 9px;border-bottom:1px solid #eee;vertical-align:top}}
+.tbl tr:hover td{{background:#fafafa}}
+.wrap{{overflow-x:auto;margin:12px 0}}
+.kpis{{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px;margin:22px 0}}
+.kpi{{border:1px solid var(--line);border-left:4px solid var(--red);border-radius:4px;padding:11px 13px}}
+.kpi .n{{font-size:25px;font-weight:650;letter-spacing:-.5px}}
+.kpi .l{{font-size:11.5px;color:var(--mut);line-height:1.4;margin-top:3px}}
+.kpi.g{{border-left-color:var(--grn)}} .kpi.a{{border-left-color:var(--amb)}}
+.note{{background:#f8f8f8;border-left:3px solid #c5c5c5;padding:11px 15px;margin:18px 0;font-size:13.5px}}
+.warn{{background:#fdf6ec;border-left:3px solid var(--amb)}}
+.lede{{font-size:16.5px;line-height:1.6}}
+footer{{margin-top:54px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--mut)}}
+code{{background:#f2f2f2;padding:1px 5px;border-radius:3px;font-size:12.5px}}
+</style></head><body>""")
+
+    A("<h1>Digital climate monitoring: consolidated data report</h1>")
+    A('<p class="sub">Every dataset gathered in this project, what it shows, how it changed over time, '
+      'and what follows from it. Nine tables, six figures, 12 costed actions.</p>')
+
+    A(f"""<div class="kpis">
+<div class="kpi"><div class="n">{counts['n_sys']}</div><div class="l">monitoring systems inventoried across {counts['n_layer']} layers</div></div>
+<div class="kpi"><div class="n">{counts['n_coupled']} of {counts['n_sys']}</div><div class="l">are connected to an action; the rest produce data only</div></div>
+<div class="kpi"><div class="n">{counts['n_blind']}</div><div class="l">stages of the harm chain are effectively unmeasured</div></div>
+<div class="kpi g"><div class="n">{counts['n_days']:,}</div><div class="l">daily temperature records analysed, 12 cities, 1950–2025</div></div>
+<div class="kpi a"><div class="n">{counts['torrid_mult']}×</div><div class="l">increase in nights above 25 °C, 1960s to 2020s</div></div>
+<div class="kpi g"><div class="n">{counts['n_cheap']} of 12</div><div class="l">proposed actions cost under €1 per person per year</div></div>
+</div>""")
+
+    A('<div class="note"><strong>How to read this.</strong> Sections 1–3 are evidence: what exists, '
+      'what it misses, and how the climate signal moved. Sections 4–5 are response: what to do, ranked by '
+      'how hard it is to start. Section 6 states what would prove the argument wrong. Every table here is '
+      'also available as a CSV artifact, and the whole set is bundled in '
+      '<code>climate_monitoring_dataset.xlsx</code>.</div>')
+
+    # ---- 1 landscape
+    A("<h2>1. What is being monitored</h2>")
+    A("<p>Forty-six operational systems were inventoried across eight layers, each scored on resolution, "
+      "latency, openness, funding model, and — the column that turned out to matter most — whether the "
+      "output is wired to any actuator that changes a physical outcome without a human choosing to act.</p>")
+    A(img("landscape","Left: monitoring systems by layer, split by whether the output triggers an action. "
+          "Right: severity of the observation gap at each stage of the chain from emission to health outcome."))
+    A(f"<p>The split is the finding. Space-based greenhouse-gas observation and urban environmental sensing — "
+      f"{counts['n_space']+counts['n_urban']} systems between them — trigger nothing at all. The layers that do act "
+      f"(regulatory reporting, grid telemetry, hazard warning) act because a regulation or a market obliges them to, "
+      f"not because the sensing is better.</p>")
+    A("<h3>Table 1 — Monitoring systems by layer</h3>")
+    A('<div class="wrap">'+table(d["lay"], idx=True)+"</div>")
+    A("<h3>Table 2 — Full inventory (46 systems)</h3>")
+    A('<div class="wrap">'+table(inv.drop(columns=["coupled"], errors="ignore"))+"</div>")
+
+    # ---- 2 gaps
+    A("<h2>2. What the monitoring misses</h2>")
+    A("<p>Walking the causal chain from emission to health outcome and scoring how well each stage is "
+      "observed produces four stages at severity 5 — essentially unmeasured.</p>")
+    A(img("harm","The harm pathway in plain language. Green: well observed. Red: not observed. "
+          "The blind band sits exactly where a person could still be helped."))
+    A("<h3>Table 3 — Gap matrix</h3>")
+    A('<div class="wrap">'+table(gm)+"</div>")
+    A('<div class="note"><strong>Updated October 2026.</strong> Two rows changed. Indoor heat monitoring is no '
+      'longer unproven — 2026 brought a Dutch crowdsourced study (<em>QJRMS</em>), work on Boulder mobile homes '
+      '(<em>Environ. Res. Commun.</em>), a New Zealand household study, and a municipal sensor programme in Miami. '
+      'And on methane, a UN satellite alert programme reports 40+ super-emitters curbed since 2023. Both gaps remain '
+      'open — feasibility is now demonstrated, deployment and coupling are not — so the severity scores are unchanged '
+      'while the evidence column is rewritten.</div>')
+
+    # ---- 3 change
+    A("<h2>3. How it changed</h2>")
+    A("<p>Daily maximum and minimum temperatures were pulled from ERA5 reanalysis for twelve southern European "
+      f"cities over 1950–2025 ({counts['n_days']:,} city-days), and indicators computed per city-year.</p>")
+    A(img("what_changed","Left: heat indicators by decade, relative to the 1960s. Middle: change in warm nights, "
+          "last 15 years against the 15 before. Right: annual publication counts by research theme (log scale)."))
+    A("<h3>3.1 The extremes moved faster than the averages</h3>")
+    A(f"<p>Between the 1960s and the 2020s, nights above 20 °C rose {counts['tn_mult']}× while nights above "
+      f"<em>25 °C</em> rose {counts['torrid_mult']}× and days above 35 °C {counts['d35_mult']}×. The further into the "
+      "tail you look, the faster the growth — which is why averages understate the change people actually feel. "
+      "The 2020s row covers 2020–2025 only.</p>")
+    A("<h3>Table 4 — Decadal means across all twelve cities</h3>")
+    A(table(dec, idx=True))
+    A("<h3>3.2 The last fifteen years</h3>")
+    A(f"<p>Comparing 2011–2025 against 1996–2010: warm nights increased in {counts['tn_up']} of 12 cities "
+      f"(mean +{counts['tn_mean']} nights/year), the longest unbroken warm-night run in {counts['run_up']} of 12, "
+      f"and days above 35 °C in {counts['d35_up']} of 12. "
+      f"{counts['down_cities']} are the exceptions on warm nights, both slightly down. Rome (+20.5 nights) and "
+      "Madrid (+19.0) moved most — both starting from a historically low base, which is why a tripling there still "
+      "leaves them below Valletta's absolute level.</p>")
+    A("<h3>Table 5 — Change by city, last 15 years vs the previous 15</h3>")
+    A(table(acc, idx=True))
+    A("<h3>3.3 The full trend record</h3>")
+    A(img("heat","Measured heat exposure, 1950–2025. (a) warm nights rising in every city; (b) the recovery gap — "
+          "consecutive warm nights; (c) day vs night warming rates; (d) hot-day burden then and now."))
+    A('<div class="warn note"><strong>A result that contradicted our expectation.</strong> We set out expecting '
+      f"nights to be warming faster than days. They are not: summer maxima rise at {counts['tmax_rate']} °C/decade "
+      f"against {counts['tmin_rate']} for minima, with days faster in {counts['faster_day']} of 12 cities. We report "
+      "it as found. The case for focusing on nights survives on distribution rather than rate — night minima sit "
+      "close to the threshold at which the body cannot recover, so the slower trend crosses that line on far more "
+      "nights than the faster daytime trend crosses 40 °C.</div>")
+    A("<h3>Table 6 — Trends and period means by city</h3>")
+    A('<div class="wrap">'+table(tr)+"</div>")
+    A("<h3>3.4 Research attention</h3>")
+    A("<p>Publication counts per theme, 2015–2025, from a structured bibliographic query. Every theme grew; the "
+      "newest ones grew from near-zero bases, which says more about when a term entered use than about how much "
+      "is known. Carbon-aware computing went from single digits to a few hundred papers a year; low-cost urban "
+      "temperature sensing grew roughly tenfold.</p>")
+    A("<h3>Table 7 — Publications per year by theme</h3>")
+    A('<div class="wrap">'+table(lit)+"</div>")
+    A('<div class="warn note"><strong>Not refreshed.</strong> These counts run to 2025. The intended refresh '
+      "through 2026 could not run because the bibliographic API credential was not approved for this session. "
+      "No finding in this report depends on them.</div>")
+
+    # ---- 4 actions
+    A("<h2>4. What we can do</h2>")
+    A("<p>Twelve interventions, each specified with capital and running cost, deploying institution, expected "
+      "effect, evidence strength, and explicit failure modes. All twelve are compatible with continued "
+      "technological development; one of them consists of running more computation, scheduled differently.</p>")
+    A(img("ease","Left: what blocks each action — hardware, legal agreements, coordination, budget. "
+          "Right: weeks until a first measurable result."))
+    A(f"<p>Ranking by ease rather than cost reorders the list substantially. The cheapest item in the catalogue "
+      f"(€0.004 per person per year) sits in the third tier because it needs a mandate; the item with zero cost "
+      "and zero permission requirements sits first.</p>")
+    A("<h3>Table 8 — Actions ranked by ease of deployment</h3>")
+    A('<div class="wrap">'+table(ez)+"</div>")
+    A("<h3>Table 9 — Full solution catalogue</h3>")
+    A('<div class="wrap">'+table(sol)+"</div>")
+
+    # ---- 5 cost
+    A("<h2>5. What it costs</h2>")
+    A(img("cost","Estimated annual cost per person covered, proposals against conventional measures, log scale."))
+    A(f"<p>{counts['n_cheap']} of the 12 proposals cost under €1 per person per year with capital amortised over "
+      "five years, against roughly €120 for room air-conditioner subsidies and €600 for deep envelope retrofit. "
+      "The two most expensive proposals remain well below the conventional measures they partly substitute for.</p>")
+    A("<h3>Table 10 — Cost comparison including conventional benchmarks</h3>")
+    A(table(cost))
+    A('<div class="note"><strong>These are engineering estimates, not procurement quotes.</strong> They are built '
+      "from component prices and coverage assumptions; the coverage denominators carry more uncertainty than the "
+      "numerators. Use them to separate options differing by two orders of magnitude, not by 30%.</div>")
+
+    # ---- 6 limits
+    A("<h2>6. Problems, limits, and what would prove this wrong</h2>")
+    A("""<h3>Problems in the evidence</h3><ul>
+<li><strong>Reanalysis is modelled, not observed.</strong> ERA5 assimilates observations into a physical model on a
+grid of roughly 30 km. It represents the climate signal at a city's location well; it does not represent the street
+the person lives on, and it cannot represent their bedroom.</li>
+<li><strong>Thresholds are conventions.</strong> 20 °C for a warm night and 35 °C for a hot day are the standard
+European definitions, not physiological constants. Risk is continuous, and the real threshold varies with humidity,
+age, medication, and acclimatisation.</li>
+<li><strong>Summer-2026 mortality figures are early press estimates</strong> and will be revised as official
+statistics catch up. They agree on order of magnitude, which is the only claim made from them here.</li>
+<li><strong>Publication counts measure attention, not knowledge.</strong> A theme growing from 7 papers to 209
+reflects a term entering circulation as much as a field maturing.</li>
+<li><strong>The inventory is a considered sample, not a census.</strong> Forty-six systems chosen for coverage
+across layers; the actuator-coupling score is a judgement applied consistently, not a measured quantity.</li>
+<li><strong>Ease scores weight four components equally.</strong> In any specific municipality a data-protection
+agreement may be trivial or fatal. Re-score locally before committing.</li></ul>""")
+    A("""<h3>What would falsify the central claim</h3>
+<p>The argument is that the binding constraint is coupling — acting on information — rather than sensing. It would
+be wrong if a well-instrumented city with a mature heat plan showed no residual preventable mortality. Current
+European evidence points the other way: heat plans are widespread and excess deaths persist through recent summers.</p>
+<p>The cheapest falsifiable piece is the indoor-sensor claim. Deploy a few hundred bedroom sensors and test whether
+indoor night minima predict individual health events better than the outdoor forecast that currently drives warnings.
+If they do not, the household tier of the catalogue collapses and the cross-cutting tier still stands.</p>""")
+    A("""<div class="note"><strong>On health.</strong> This report concerns population-level risk and monitoring
+design. It is not clinical guidance. Decisions about any individual's care — including anyone a system of this kind
+flags as at risk — rest with qualified health professionals who have the full context.</div>""")
+
+    A("""<footer>Sources: ERA5 reanalysis via the Open-Meteo archive (1950–2025, 12 cities); OpenAlex bibliographic
+queries (2015–2025); operational documentation for 46 monitoring systems; peer-reviewed and press sources listed in
+<em>plain_language_guide.md</em>. Analysis in Python (pandas, scipy, matplotlib). Every table is available as a
+standalone CSV and bundled in <em>climate_monitoring_dataset.xlsx</em>.</footer></body></html>""")
+    return "\n".join(P)

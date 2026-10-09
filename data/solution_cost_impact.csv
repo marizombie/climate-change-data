@@ -1,0 +1,17 @@
+id,label,eur_per_person_year,evidence_score,tier,kind
+S1,Indoor heat sentinel with escalation,5.625,2.0,Household,proposed
+S2,Smart-meter heat-vulnerability screening,0.2,2.0,Neighbourhood,proposed
+S3,Night-ventilation advisory,0.625,2.5,Household,proposed
+S4,Shade-first retrofit protocol,43.75,3.0,Household,proposed
+S5,Cool-route mapping from open data,0.053,2.0,Neighbourhood,proposed
+S6,Opportunistic mobile sensing on public fleets,0.005,2.0,Neighbourhood,proposed
+S7,Calibration-as-a-service for low-cost sensors,0.041,3.0,Cross-cutting,proposed
+S8,Open heat-data schema and municipal API,0.004,3.0,Cross-cutting,proposed
+S9,Heat-triggered welfare call roster,12.8,2.0,Neighbourhood,proposed
+S10,Public cool-refuge network with occupancy sensing,0.68,2.0,Neighbourhood,proposed
+S11,Carbon-aware scheduling of flexible compute and charging,0.0,3.0,Cross-cutting,proposed
+S12,Instrument every adaptation project,0.015,3.0,Cross-cutting,proposed
+,Room air-conditioner subsidy,120.0,3.0,,benchmark
+,Deep envelope retrofit,600.0,3.0,,benchmark
+,Large urban greening programme,18.0,2.0,,benchmark
+,City-wide reference-grade sensor network,1.2,3.0,,benchmark
