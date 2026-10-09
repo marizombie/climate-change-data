@@ -13,7 +13,7 @@ FILES = {  # filenames for static-site / repo builds
  "harm":"how_heat_harms.png", "heat":"heat_exposure_figure.png",
  "ease":"actions_by_ease.png", "cost":"solution_cost_impact.png",
 }
-MODE = {"v": "artifact"}   # "artifact" for in-app rendering, "relative" for repo/site
+MODE = {"v": "relative"}   # "relative" for repo/site builds; "artifact" is host-internal
 
 def img(k, cap):
     src = (f"{{{{artifact:art_{ART[k]}}}}}" if MODE["v"] == "artifact"
@@ -215,3 +215,82 @@ queries (2015–2025); operational documentation for 46 monitoring systems; peer
 <em>plain_language_guide.md</em>. Analysis in Python (pandas, scipy, matplotlib). Every table is available as a
 standalone CSV and bundled in <em>climate_monitoring_dataset.xlsx</em>.</footer></body></html>""")
     return "\n".join(P)
+
+
+# ---------------------------------------------------------------------------
+# Standalone entry point: load every table from data/, derive the inline
+# counts, and write site/index.html with relative figure paths.
+# ---------------------------------------------------------------------------
+
+def load_tables():
+    """Read the committed CSVs into the dict shape build() expects."""
+    names = {"inv": "monitoring_inventory", "gm": "gap_matrix",
+             "sol": "solutions_catalogue", "ez": "actions_by_ease",
+             "tr": "heat_trends", "cost": "solution_cost_impact"}
+    d = {k: pd.read_csv(f"data/{v}.csv") for k, v in names.items()}
+    d["dec"] = pd.read_csv("data/decadal_summary.csv", index_col=0)
+    d["acc"] = pd.read_csv("data/recent_change_by_city.csv", index_col=0)
+    d["lit"] = pd.read_csv("data/literature_counts_by_year.csv").rename(
+        columns={"Unnamed: 0": "year"})
+
+    inv = d["inv"].copy()
+    inv["coupled"] = inv.coupled_to_actuator.astype(str).str.strip().str.startswith("Yes")
+    lay = (inv.groupby("layer")
+           .agg(Systems=("system", "size"),
+                **{"Connected to an action": ("coupled", "sum")})
+           .sort_values("Systems", ascending=False))
+    lay["Data only"] = lay["Systems"] - lay["Connected to an action"]
+    lay.index.name = "Layer"
+    d["lay"] = lay
+    return d
+
+
+def derive_counts(d):
+    """Every number interpolated into the report prose, computed from the data."""
+    inv, gm, tr = d["inv"].copy(), d["gm"], d["tr"]
+    dec, acc, cost, lay = d["dec"], d["acc"], d["cost"], d["lay"]
+    inv["coupled"] = inv.coupled_to_actuator.astype(str).str.strip().str.startswith("Yes")
+    ann = pd.read_csv("data/heat_trends_annual.csv")
+    prop = cost[cost.kind == "proposed"]
+    down = acc.index[acc.tn20_change <= 0].tolist()
+    return dict(
+        n_sys=len(inv), n_layer=inv.layer.nunique(),
+        n_coupled=int(inv.coupled.sum()),
+        n_blind=int((gm.gap_severity_0to5 == 5).sum()),
+        n_days=int(len(ann) * 365.25),
+        torrid_mult=round(dec.loc[2020, "torrid_nights_25"] / dec.loc[1960, "torrid_nights_25"], 1),
+        tn_mult=round(dec.loc[2020, "tropical_nights_20"] / dec.loc[1960, "tropical_nights_20"], 1),
+        d35_mult=round(dec.loc[2020, "days_over_35"] / dec.loc[1960, "days_over_35"], 1),
+        n_cheap=int((prop.eur_per_person_year < 1).sum()),
+        n_space=int(lay.loc["Space-based GHG", "Systems"]),
+        n_urban=int(lay.loc["Urban and environmental", "Systems"]),
+        tn_up=int((acc.tn20_change > 0).sum()),
+        run_up=int((acc.run_change > 0).sum()),
+        d35_up=int((acc.d35_change > 0).sum()),
+        tn_mean=round(float(acc.tn20_change.mean()), 1),
+        down_cities=" and ".join(down) if down else "none",
+        tmax_rate=round(float(tr.mean_tmax_JJA_per_decade.mean()), 2),
+        tmin_rate=round(float(tr.mean_tmin_JJA_per_decade.mean()), 2),
+        faster_day=int((tr.mean_tmax_JJA_per_decade > tr.mean_tmin_JJA_per_decade).sum()),
+    )
+
+
+def main():
+    import os
+    d = load_tables()
+    counts = derive_counts(d)
+    os.makedirs("site/figures", exist_ok=True)
+    html = build(d, counts)
+    with open("site/index.html", "w") as fh:
+        fh.write(html)
+    for name in FILES.values():
+        src, dst = f"figures/{name}", f"site/figures/{name}"
+        if os.path.exists(src):
+            with open(src, "rb") as a, open(dst, "wb") as b:
+                b.write(a.read())
+    print(f"wrote site/index.html  ({len(html):,} chars, "
+          f"{html.count('<table')} tables, {html.count('<figure')} figures)")
+
+
+if __name__ == "__main__":
+    main()
