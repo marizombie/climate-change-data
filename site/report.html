@@ -1,0 +1,2456 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital climate monitoring — consolidated data report</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/common.js"></script>
+<style>
+:root{--bg:#fbfaf8;--surface-2:#f3f1ed;--ink:#1b1a19;--ink-2:#4a4744;--muted:#6e6a65;--line:#e4e0da;
+--line-2:#d4cfc7;--accent:#b9381b;--amber:#b7791f;--amber-soft:#fbf1e1;--ok:#1a7046;--cool:#1f5f8b;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151413;--surface-2:#262422;--ink:#f1eeea;
+--ink-2:#cdc8c1;--muted:#9d978f;--line:#34312e;--line-2:#45413c;--accent:#f0714f;--amber:#e8a33d;--amber-soft:#33280f;
+--ok:#6cc596;--cool:#7fb6dc;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#151413;--surface-2:#262422;--ink:#f1eeea;--ink-2:#cdc8c1;--muted:#9d978f;--line:#34312e;
+--line-2:#45413c;--accent:#f0714f;--amber:#e8a33d;--amber-soft:#33280f;--ok:#6cc596;--cool:#7fb6dc;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink)}
+.report a{color:var(--cool)}
+.report{font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+max-width:1120px;margin:0 auto;padding:40px 16px 90px}
+@media (min-width:720px){.report{padding:40px 28px 90px}}
+.report h1{font-size:30px;line-height:1.25;margin:0 0 6px;letter-spacing:-.4px}
+.report h2{font-size:21px;margin:46px 0 8px;padding-top:18px;border-top:2px solid var(--ink)}
+.report h3{font-size:16px;margin:28px 0 6px;color:var(--ink-2)}
+.report .sub{color:var(--muted);font-size:14px;margin:0 0 26px}
+.report p{margin:10px 0}
+.report figure{margin:22px 0} .report figure img{width:100%;border:1px solid var(--line);border-radius:5px}
+.report figcaption{font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.5}
+.report table.tbl{border-collapse:collapse;width:100%;font-size:12.5px;margin:12px 0 6px}
+.report .tbl th{text-align:left;background:var(--surface-2);padding:7px 9px;border-bottom:2px solid var(--line-2);
+font-weight:600;vertical-align:bottom}
+.report .tbl td{padding:6px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+.report .tbl tr:hover td{background:var(--surface-2)}
+.report .tbl-wrap{overflow-x:auto;margin:12px 0}
+.report .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px;margin:22px 0}
+.report .kpi{background:transparent;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:4px;padding:11px 13px}
+.report .kpi .n{font-size:25px;font-weight:650;letter-spacing:-.5px}
+.report .kpi .l{font-size:11.5px;color:var(--muted);line-height:1.4;margin-top:3px}
+.report .kpi.g{border-left-color:var(--ok)} .report .kpi.a{border-left-color:var(--amber)}
+.report .note{background:var(--surface-2);color:var(--ink);border-left:3px solid var(--line-2);border-radius:0;
+padding:11px 15px;margin:18px 0;font-size:13.5px}
+.report .warn{background:var(--amber-soft);border-left:3px solid var(--amber)}
+.report .lede{font-size:16.5px;line-height:1.6}
+.report footer{margin-top:54px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.report code{background:var(--surface-2);padding:1px 5px;border-radius:3px;font-size:12.5px}
+</style></head><body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"></span>Climate Heat Monitoring</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="./#datasets">Datasets</a>
+      <a href="explore.html">Explore</a>
+      <a href="report.html" aria-current="page">Report</a>
+      <a href="./#use">Use &amp; cite</a>
+      <a href="./#maintenance">Maintenance</a>
+      <a data-link="repo" href="#">GitHub</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
+  </div>
+</header>
+<main class="report">
+<h1>Digital climate monitoring: consolidated data report</h1>
+<p class="sub">Every dataset gathered in this project, what it shows, how it changed over time, and what follows from it. Nine tables, six figures, 12 costed actions.</p>
+<div class="kpis">
+<div class="kpi"><div class="n">46</div><div class="l">monitoring systems inventoried across 8 layers</div></div>
+<div class="kpi"><div class="n">12 of 46</div><div class="l">are connected to an action; the rest produce data only</div></div>
+<div class="kpi"><div class="n">4</div><div class="l">stages of the harm chain are effectively unmeasured</div></div>
+<div class="kpi g"><div class="n">333,108</div><div class="l">daily temperature records analysed, 12 cities, 1950–2025</div></div>
+<div class="kpi a"><div class="n">6.5×</div><div class="l">increase in nights above 25 °C, 1960s to 2020s</div></div>
+<div class="kpi g"><div class="n">9 of 12</div><div class="l">proposed actions cost under €1 per person per year</div></div>
+</div>
+<div class="note"><strong>How to read this.</strong> Sections 1–3 are evidence: what exists, what it misses, and how the climate signal moved. Sections 4–5 are response: what to do, ranked by how hard it is to start. Section 6 states what would prove the argument wrong. Every table here can be searched, filtered and downloaded as CSV in the <a href="explore.html">data explorer</a>, and the whole set is bundled in <a href="data/climate-heat-monitoring-data.zip">one zip</a>.</div>
+<h2>1. What is being monitored</h2>
+<p>Forty-six operational systems were inventoried across eight layers, each scored on resolution, latency, openness, funding model, and — the column that turned out to matter most — whether the output is wired to any actuator that changes a physical outcome without a human choosing to act.</p>
+<figure><img src="figures/monitoring_landscape.png" alt="Left: monitoring systems by layer, split by whether the output triggers an action. Right: severity of the observation gap at each stage of the chain from emission to health outcome."><figcaption>Left: monitoring systems by layer, split by whether the output triggers an action. Right: severity of the observation gap at each stage of the chain from emission to health outcome.</figcaption></figure>
+<p>The split is the finding. Space-based greenhouse-gas observation and urban environmental sensing — 18 systems between them — trigger nothing at all. The layers that do act (regulatory reporting, grid telemetry, hazard warning) act because a regulation or a market obliges them to, not because the sensing is better.</p>
+<h3>Table 1 — Monitoring systems by layer</h3>
+<div class="tbl-wrap"><table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Systems</th>
+      <th>Connected to an action</th>
+      <th>Data only</th>
+    </tr>
+    <tr>
+      <th>Layer</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Urban and environmental</th>
+      <td>10</td>
+      <td>0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>Regulatory MRV</th>
+      <td>8</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Space-based GHG</th>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>Hazard early warning</th>
+      <td>7</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Grid and energy</th>
+      <td>5</td>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Buildings and indoor</th>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Mobility and opportunistic</th>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Finance and accountability</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3>Table 2 — Full inventory (46 systems)</h3>
+<div class="tbl-wrap"><table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>layer</th>
+      <th>system</th>
+      <th>operator</th>
+      <th>geographic_scope</th>
+      <th>what_it_measures</th>
+      <th>spatial_resolution</th>
+      <th>revisit_or_latency</th>
+      <th>open_data</th>
+      <th>funding_model</th>
+      <th>coupled_to_actuator</th>
+      <th>maturity</th>
+      <th>notes_and_provenance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Space-based GHG</td>
+      <td>Sentinel-5P TROPOMI</td>
+      <td>ESA / Copernicus</td>
+      <td>Global</td>
+      <td>Column CH4, NO2, CO, SO2, aerosol</td>
+      <td>5.5 x 7 km</td>
+      <td>Daily global; L2 within ~5 h (NRTI)</td>
+      <td>Fully open</td>
+      <td>EU public (Copernicus)</td>
+      <td>No</td>
+      <td>Operational since 2017</td>
+      <td>Workhorse for global methane super-emitter screening; too coarse for individual small sources. https://sentinels.copernicus.eu</td>
+    </tr>
+    <tr>
+      <td>Space-based GHG</td>
+      <td>GHGSat constellation</td>
+      <td>GHGSat Inc (commercial)</td>
+      <td>Global tasked</td>
+      <td>Facility-level CH4 plumes</td>
+      <td>~25 m</td>
+      <td>Tasked; days</td>
+      <td>Partial (subset via IMEO)</td>
+      <td>Commercial + public contracts</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>High-resolution point-source attribution; most data behind commercial licence.</td>
+    </tr>
+    <tr>
+      <td>Space-based GHG</td>
+      <td>MethaneSAT</td>
+      <td>EDF / MethaneSAT LLC</td>
+      <td>Global targeted basins</td>
+      <td>Basin-scale + point CH4</td>
+      <td>~100 x 400 m</td>
+      <td>Targeted; weeks</td>
+      <td>Open (stated policy)</td>
+      <td>Philanthropic (Bezos Earth Fund et al)</td>
+      <td>No</td>
+      <td>Launched 2024; mission lost contact 2025</td>
+      <td>Data policy was open; mission failure illustrates fragility of single-satellite dependence.</td>
+    </tr>
+    <tr>
+      <td>Space-based GHG</td>
+      <td>Carbon Mapper / Tanager-1</td>
+      <td>Carbon Mapper coalition + Planet</td>
+      <td>Global targeted</td>
+      <td>CH4 and CO2 plumes</td>
+      <td>~30 m</td>
+      <td>Targeted</td>
+      <td>Open portal</td>
+      <td>Philanthropic + public</td>
+      <td>No</td>
+      <td>Operational since 2024</td>
+      <td>Public plume portal is a rare example of open point-source attribution.</td>
+    </tr>
+    <tr>
+      <td>Space-based GHG</td>
+      <td>EMIT</td>
+      <td>NASA JPL (ISS)</td>
+      <td>+/-52 deg latitude</td>
+      <td>Mineral dust + opportunistic CH4/CO2 plumes</td>
+      <td>~60 m</td>
+      <td>Opportunistic</td>
+      <td>Open</td>
+      <td>Public (NASA)</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Repurposed mineralogy imager; shows value of opportunistic reuse of existing assets.</td>
+    </tr>
+    <tr>
+      <td>Space-based GHG</td>
+      <td>CO2M (Copernicus Anthropogenic CO2 Monitoring)</td>
+      <td>ESA / EU</td>
+      <td>Global</td>
+      <td>Anthropogenic CO2 column</td>
+      <td>~2 x 2 km</td>
+      <td>Planned near-daily</td>
+      <td>Planned open</td>
+      <td>EU public</td>
+      <td>Designed to feed EU MRV</td>
+      <td>Launch planned ~2027</td>
+      <td>Intended as the observational backbone of Paris Agreement global stocktake verification.</td>
+    </tr>
+    <tr>
+      <td>Space-based GHG</td>
+      <td>OCO-2 / OCO-3</td>
+      <td>NASA</td>
+      <td>Global</td>
+      <td>Column CO2</td>
+      <td>1.3 x 2.3 km</td>
+      <td>16-day repeat</td>
+      <td>Open</td>
+      <td>Public</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Science-grade but sparse sampling; not a compliance instrument.</td>
+    </tr>
+    <tr>
+      <td>Space-based GHG</td>
+      <td>GOSAT / GOSAT-2</td>
+      <td>JAXA / NIES</td>
+      <td>Global</td>
+      <td>CO2 CH4 column</td>
+      <td>~10 km</td>
+      <td>3-day</td>
+      <td>Open on registration</td>
+      <td>Public (Japan)</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Longest continuous space GHG record (since 2009).</td>
+    </tr>
+    <tr>
+      <td>Regulatory MRV</td>
+      <td>UNEP IMEO Methane Alert and Response System (MARS)</td>
+      <td>UNEP</td>
+      <td>Global</td>
+      <td>Satellite-detected methane plumes routed to operators/governments</td>
+      <td>Source-level</td>
+      <td>Notification within days-weeks</td>
+      <td>Partial (public data platform)</td>
+      <td>UN + donor</td>
+      <td>Yes - notification, but response voluntary</td>
+      <td>Operational since 2022</td>
+      <td>Documented low response rate to notifications is the central weakness: detection without obligation.</td>
+    </tr>
+    <tr>
+      <td>Regulatory MRV</td>
+      <td>OGMP 2.0</td>
+      <td>UNEP / industry</td>
+      <td>Company-level global</td>
+      <td>Reported CH4 emissions at 5 levels of rigour</td>
+      <td>Asset-level</td>
+      <td>Annual</td>
+      <td>Company reports public</td>
+      <td>Voluntary industry</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Level 4/5 requires measurement-based reporting; adoption uneven outside signatories.</td>
+    </tr>
+    <tr>
+      <td>Regulatory MRV</td>
+      <td>EU Methane Regulation (EU) 2024/1787</td>
+      <td>European Commission</td>
+      <td>EU + importers</td>
+      <td>LDAR surveys, venting/flaring records, import intensity</td>
+      <td>Asset-level</td>
+      <td>Periodic surveys; phased 2025-2030</td>
+      <td>Aggregates public</td>
+      <td>Regulatory (operator-funded)</td>
+      <td>Yes - mandates repair deadlines</td>
+      <td>Phasing in</td>
+      <td>Rare case where measurement is legally bound to a required action and timeline.</td>
+    </tr>
+    <tr>
+      <td>Regulatory MRV</td>
+      <td>EU CSRD / ESRS E1</td>
+      <td>European Commission / EFRAG</td>
+      <td>EU large companies</td>
+      <td>Scope 1-3 GHG + transition plan disclosure</td>
+      <td>Entity-level</td>
+      <td>Annual</td>
+      <td>Public filings</td>
+      <td>Regulatory</td>
+      <td>No</td>
+      <td>Phasing in; scope narrowed by Omnibus 2025</td>
+      <td>Disclosure volume rising while assurance capacity and comparability lag.</td>
+    </tr>
+    <tr>
+      <td>Regulatory MRV</td>
+      <td>EU CBAM</td>
+      <td>European Commission</td>
+      <td>EU imports</td>
+      <td>Embedded carbon in imported goods</td>
+      <td>Product-level</td>
+      <td>Quarterly reports; definitive regime 2026</td>
+      <td>Aggregates</td>
+      <td>Regulatory</td>
+      <td>Yes - financial levy</td>
+      <td>Transitional to definitive</td>
+      <td>Creates first large-scale demand for verified product-level carbon data across borders.</td>
+    </tr>
+    <tr>
+      <td>Regulatory MRV</td>
+      <td>EU ETS / ETS2 MRV</td>
+      <td>European Commission + member states</td>
+      <td>EU</td>
+      <td>Verified installation emissions</td>
+      <td>Installation-level</td>
+      <td>Annual verified</td>
+      <td>Registry public</td>
+      <td>Regulatory</td>
+      <td>Yes - allowance surrender</td>
+      <td>Operational; ETS2 from 2027</td>
+      <td>Most mature emissions-to-consequence coupling in existence.</td>
+    </tr>
+    <tr>
+      <td>Regulatory MRV</td>
+      <td>UNFCCC Enhanced Transparency Framework (BTR)</td>
+      <td>UNFCCC parties</td>
+      <td>Global</td>
+      <td>National inventories</td>
+      <td>National</td>
+      <td>Biennial</td>
+      <td>Public</td>
+      <td>Treaty</td>
+      <td>No</td>
+      <td>First BTRs due 2024-25</td>
+      <td>Self-reported; independent atmospheric verification still largely absent.</td>
+    </tr>
+    <tr>
+      <td>Regulatory MRV</td>
+      <td>Climate TRACE</td>
+      <td>Climate TRACE coalition</td>
+      <td>Global</td>
+      <td>Modelled asset-level emissions from satellite + AI</td>
+      <td>Facility-level</td>
+      <td>Annual/monthly updates</td>
+      <td>Fully open</td>
+      <td>Philanthropic</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Fills gap where official inventories are late or missing; estimates not legally recognised.</td>
+    </tr>
+    <tr>
+      <td>Grid and energy</td>
+      <td>EU smart electricity meters</td>
+      <td>DSOs / member states</td>
+      <td>EU</td>
+      <td>Household electricity consumption</td>
+      <td>Household</td>
+      <td>15-min to daily</td>
+      <td>No (privacy-held by DSO)</td>
+      <td>Regulated asset base</td>
+      <td>Partly - enables demand response</td>
+      <td>~60 percent EU rollout</td>
+      <td>Enormous latent sensing network already installed; almost no public-health or climate-adaptation use.</td>
+    </tr>
+    <tr>
+      <td>Grid and energy</td>
+      <td>ENTSO-E Transparency Platform</td>
+      <td>ENTSO-E</td>
+      <td>EU</td>
+      <td>Generation, load, cross-border flows, prices</td>
+      <td>Bidding zone</td>
+      <td>Hourly - near real time</td>
+      <td>Fully open</td>
+      <td>Regulated</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Excellent open data layer; the model to copy for other domains.</td>
+    </tr>
+    <tr>
+      <td>Grid and energy</td>
+      <td>Electricity Maps / ElectricityMap</td>
+      <td>Private (freemium)</td>
+      <td>Global</td>
+      <td>Real-time grid carbon intensity</td>
+      <td>Zone</td>
+      <td>Hourly</td>
+      <td>Freemium</td>
+      <td>Commercial</td>
+      <td>Yes - carbon-aware scheduling APIs</td>
+      <td>Operational</td>
+      <td>Enables shifting flexible compute and charging to low-carbon hours.</td>
+    </tr>
+    <tr>
+      <td>Grid and energy</td>
+      <td>WattTime</td>
+      <td>WattTime (nonprofit)</td>
+      <td>Global</td>
+      <td>Marginal emissions signal</td>
+      <td>Grid region</td>
+      <td>5-min</td>
+      <td>Freemium</td>
+      <td>Nonprofit</td>
+      <td>Yes - automated emissions reduction</td>
+      <td>Operational</td>
+      <td>Demonstrates monitoring wired directly to actuators (thermostats, EV chargers).</td>
+    </tr>
+    <tr>
+      <td>Grid and energy</td>
+      <td>Carbon-aware compute schedulers</td>
+      <td>Google / Microsoft / open source</td>
+      <td>Global datacentres</td>
+      <td>Deferrable workload timing</td>
+      <td>Datacentre</td>
+      <td>Sub-hourly</td>
+      <td>Partially documented</td>
+      <td>Corporate</td>
+      <td>Yes</td>
+      <td>Operational</td>
+      <td>Proof that digital monitoring can cut emissions without cutting technology output.</td>
+    </tr>
+    <tr>
+      <td>Urban and environmental</td>
+      <td>Copernicus Land Surface Temperature (Sentinel-3 SLSTR)</td>
+      <td>ESA / Copernicus</td>
+      <td>Global</td>
+      <td>Land surface temperature</td>
+      <td>1 km</td>
+      <td>~Daily</td>
+      <td>Fully open</td>
+      <td>EU public</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Free UHI mapping input for any municipality; underused by small cities.</td>
+    </tr>
+    <tr>
+      <td>Urban and environmental</td>
+      <td>Landsat 8/9 TIRS</td>
+      <td>USGS / NASA</td>
+      <td>Global</td>
+      <td>Thermal surface temperature</td>
+      <td>100 m (resampled 30 m)</td>
+      <td>16-day</td>
+      <td>Fully open</td>
+      <td>Public</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Highest free spatial resolution thermal - basis for cool-route mapping.</td>
+    </tr>
+    <tr>
+      <td>Urban and environmental</td>
+      <td>ECOSTRESS</td>
+      <td>NASA JPL (ISS)</td>
+      <td>+/-52 deg</td>
+      <td>Surface temperature and evapotranspiration</td>
+      <td>~70 m</td>
+      <td>Variable diurnal sampling</td>
+      <td>Open</td>
+      <td>Public</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Unique for capturing time-of-day variation in urban heat.</td>
+    </tr>
+    <tr>
+      <td>Urban and environmental</td>
+      <td>Netatmo citizen weather network</td>
+      <td>Netatmo (Legrand)</td>
+      <td>Global crowdsourced</td>
+      <td>Air temperature humidity pressure at homes</td>
+      <td>Point (dense in cities)</td>
+      <td>~10-min</td>
+      <td>API with limits</td>
+      <td>Consumer hardware sales</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Largest de facto urban air-temperature network; biased to affluent households - a documented equity problem.</td>
+    </tr>
+    <tr>
+      <td>Urban and environmental</td>
+      <td>Weather Underground / PWS networks</td>
+      <td>IBM</td>
+      <td>Global</td>
+      <td>Amateur weather stations</td>
+      <td>Point</td>
+      <td>~5-min</td>
+      <td>Open API</td>
+      <td>Commercial</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Quality control is the limiting factor for scientific use.</td>
+    </tr>
+    <tr>
+      <td>Urban and environmental</td>
+      <td>SensEURCity</td>
+      <td>JRC / EU</td>
+      <td>3 EU cities</td>
+      <td>Low-cost air quality sensor benchmark</td>
+      <td>Point</td>
+      <td>Continuous</td>
+      <td>Open dataset</td>
+      <td>EU research</td>
+      <td>No</td>
+      <td>Completed dataset</td>
+      <td>Key reference for calibrating low-cost sensors against reference instruments.</td>
+    </tr>
+    <tr>
+      <td>Urban and environmental</td>
+      <td>European street-level urban air temperature compilation</td>
+      <td>Academic consortium</td>
+      <td>Europe</td>
+      <td>Harmonised street-level air temperature</td>
+      <td>Point</td>
+      <td>Historic compilation</td>
+      <td>Open dataset</td>
+      <td>Research grant</td>
+      <td>No</td>
+      <td>Published 2026</td>
+      <td>Shows that dozens of city networks exist but were never interoperable until compiled post hoc.</td>
+    </tr>
+    <tr>
+      <td>Urban and environmental</td>
+      <td>I-UHI Innsbruck</td>
+      <td>University of Innsbruck</td>
+      <td>Innsbruck</td>
+      <td>Dense urban heat island observation</td>
+      <td>Point network</td>
+      <td>Continuous</td>
+      <td>Research</td>
+      <td>Research grant</td>
+      <td>No</td>
+      <td>Active project</td>
+      <td>Typical grant-funded city network - high quality but finite lifespan.</td>
+    </tr>
+    <tr>
+      <td>Urban and environmental</td>
+      <td>Urban digital twins (e.g. Destination Earth DestinE)</td>
+      <td>EU / ECMWF / ESA / EUMETSAT</td>
+      <td>EU</td>
+      <td>Coupled Earth system + urban simulation</td>
+      <td>km to sub-km</td>
+      <td>On-demand</td>
+      <td>Partly open</td>
+      <td>EU public</td>
+      <td>No</td>
+      <td>Building out</td>
+      <td>High capability but high cost; little uptake by small municipalities so far.</td>
+    </tr>
+    <tr>
+      <td>Urban and environmental</td>
+      <td>Copernicus Urban Atlas</td>
+      <td>EEA</td>
+      <td>EU cities</td>
+      <td>Land cover, imperviousness, tree cover</td>
+      <td>10 m</td>
+      <td>~3-yearly</td>
+      <td>Fully open</td>
+      <td>EU public</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Free input for shade and greening prioritisation.</td>
+    </tr>
+    <tr>
+      <td>Hazard early warning</td>
+      <td>Copernicus Emergency Management Service</td>
+      <td>EU</td>
+      <td>Global on activation</td>
+      <td>Rapid mapping of floods fires</td>
+      <td>Variable</td>
+      <td>Hours on activation</td>
+      <td>Open products</td>
+      <td>EU public</td>
+      <td>Yes - civil protection</td>
+      <td>Operational</td>
+      <td>Activation-driven; not continuous.</td>
+    </tr>
+    <tr>
+      <td>Hazard early warning</td>
+      <td>EFFIS European Forest Fire Information System</td>
+      <td>EU JRC</td>
+      <td>Europe + neighbourhood</td>
+      <td>Fire danger forecast burnt area</td>
+      <td>~8 km forecast</td>
+      <td>Daily</td>
+      <td>Open</td>
+      <td>EU public</td>
+      <td>Yes - preparedness levels</td>
+      <td>Operational</td>
+      <td>Strong example of forecast-to-action coupling in civil protection.</td>
+    </tr>
+    <tr>
+      <td>Hazard early warning</td>
+      <td>National Heat-Health Warning Systems</td>
+      <td>Member state health ministries / met services</td>
+      <td>Most EU states</td>
+      <td>Forecast heat thresholds</td>
+      <td>Region</td>
+      <td>Daily forecast 1-3 days</td>
+      <td>Public alerts</td>
+      <td>National public</td>
+      <td>Yes in principle - plan activation</td>
+      <td>Operational but uneven</td>
+      <td>Coverage exists nearly everywhere; effectiveness varies widely and evaluation is sparse.</td>
+    </tr>
+    <tr>
+      <td>Hazard early warning</td>
+      <td>Copernicus C3S European Heat and Health service</td>
+      <td>ECMWF / C3S</td>
+      <td>Europe</td>
+      <td>Heat stress indices (UTCI)</td>
+      <td>~9-25 km</td>
+      <td>Daily to seasonal</td>
+      <td>Open</td>
+      <td>EU public</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Provides the index layer; last-mile delivery to at-risk individuals is the gap.</td>
+    </tr>
+    <tr>
+      <td>Hazard early warning</td>
+      <td>EuroMOMO</td>
+      <td>EU mortality monitoring network</td>
+      <td>~28 European countries</td>
+      <td>Weekly all-cause excess mortality</td>
+      <td>National/regional</td>
+      <td>Weekly (1-2 week lag)</td>
+      <td>Open charts</td>
+      <td>Public health</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>The only continent-wide outcome signal - but too lagged to steer a live heatwave response.</td>
+    </tr>
+    <tr>
+      <td>Hazard early warning</td>
+      <td>WMO/WHO Global Heat Health Information Network</td>
+      <td>WMO + WHO</td>
+      <td>Global</td>
+      <td>Guidance and coordination</td>
+      <td>—</td>
+      <td>—</td>
+      <td>Open guidance</td>
+      <td>UN</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Norm-setting rather than sensing.</td>
+    </tr>
+    <tr>
+      <td>Hazard early warning</td>
+      <td>Lancet Countdown indicators</td>
+      <td>Academic consortium</td>
+      <td>Global</td>
+      <td>Heat exposure vulnerability and health indicators</td>
+      <td>Country</td>
+      <td>Annual</td>
+      <td>Open</td>
+      <td>Research/philanthropic</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Annual retrospective; useful for accountability not operations.</td>
+    </tr>
+    <tr>
+      <td>Buildings and indoor</td>
+      <td>EU Energy Performance of Buildings Directive (EPBD 2024 recast)</td>
+      <td>European Commission</td>
+      <td>EU</td>
+      <td>Energy performance certificates, renovation passports, indoor environmental quality provisions</td>
+      <td>Building</td>
+      <td>At certification events</td>
+      <td>Registers partly public</td>
+      <td>Regulatory</td>
+      <td>Partly - triggers renovation requirements</td>
+      <td>Transposition to 2026-2030</td>
+      <td>First EU instrument to name indoor environmental quality monitoring; implementation still nascent.</td>
+    </tr>
+    <tr>
+      <td>Buildings and indoor</td>
+      <td>Smart thermostats (Nest Tado Netatmo etc)</td>
+      <td>Private vendors</td>
+      <td>Global consumer</td>
+      <td>Indoor temperature and setpoint</td>
+      <td>Room</td>
+      <td>Minutes</td>
+      <td>Vendor-held</td>
+      <td>Consumer + subscription</td>
+      <td>Yes - HVAC control</td>
+      <td>Mature in north; low penetration in southern rental stock</td>
+      <td>Indoor temperature data exists at scale but is commercially siloed and skewed to owners of heating/cooling systems.</td>
+    </tr>
+    <tr>
+      <td>Buildings and indoor</td>
+      <td>Social housing indoor monitoring pilots</td>
+      <td>Municipalities / housing associations</td>
+      <td>Scattered pilots</td>
+      <td>Indoor temperature and humidity</td>
+      <td>Dwelling</td>
+      <td>Continuous</td>
+      <td>Rarely public</td>
+      <td>Project grants</td>
+      <td>Rarely</td>
+      <td>Pilot stage</td>
+      <td>No systematic EU-wide indoor heat surveillance in vulnerable housing exists.</td>
+    </tr>
+    <tr>
+      <td>Mobility and opportunistic</td>
+      <td>Mobile sensing from transit fleets</td>
+      <td>Various research projects</td>
+      <td>Scattered</td>
+      <td>Air temperature and pollutants from buses/trams</td>
+      <td>Route-level transects</td>
+      <td>Continuous while in service</td>
+      <td>Rarely public</td>
+      <td>Research</td>
+      <td>No</td>
+      <td>Pilot to early operational</td>
+      <td>Cheapest route to dense spatial coverage; underexploited in southern Europe.</td>
+    </tr>
+    <tr>
+      <td>Mobility and opportunistic</td>
+      <td>Vehicle-fleet ambient temperature telemetry</td>
+      <td>Automotive OEMs</td>
+      <td>Global</td>
+      <td>Ambient temperature from in-car sensors</td>
+      <td>Road network</td>
+      <td>Continuous</td>
+      <td>Not public</td>
+      <td>Commercial</td>
+      <td>No</td>
+      <td>Exists but closed</td>
+      <td>Millions of moving thermometers already deployed; data locked in OEM clouds.</td>
+    </tr>
+    <tr>
+      <td>Mobility and opportunistic</td>
+      <td>Smartphone-derived population presence</td>
+      <td>Telecoms / MNO analytics</td>
+      <td>Global</td>
+      <td>Where people are and when</td>
+      <td>Cell/grid</td>
+      <td>Near real time</td>
+      <td>Aggregates sometimes sold</td>
+      <td>Commercial</td>
+      <td>No</td>
+      <td>Operational</td>
+      <td>Would enable exposure-weighted heat risk; privacy governance is the blocker not the technology.</td>
+    </tr>
+    <tr>
+      <td>Finance and accountability</td>
+      <td>TCFD / ISSB IFRS S2</td>
+      <td>ISSB</td>
+      <td>Adopting jurisdictions</td>
+      <td>Climate-related financial disclosure</td>
+      <td>Entity</td>
+      <td>Annual</td>
+      <td>Public filings</td>
+      <td>Regulatory/voluntary</td>
+      <td>No</td>
+      <td>Adoption spreading</td>
+      <td>Converging disclosure baseline; still self-reported.</td>
+    </tr>
+    <tr>
+      <td>Finance and accountability</td>
+      <td>Carbon credit MRV (Verra Gold Standard digital MRV)</td>
+      <td>Registries</td>
+      <td>Global projects</td>
+      <td>Project-level removals/reductions</td>
+      <td>Project</td>
+      <td>Periodic</td>
+      <td>Registry public</td>
+      <td>Market</td>
+      <td>Yes - credit issuance</td>
+      <td>Operational and contested</td>
+      <td>Digital MRV is being adopted to address documented over-crediting; verification independence remains the issue.</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>2. What the monitoring misses</h2>
+<p>Walking the causal chain from emission to health outcome and scoring how well each stage is observed produces four stages at severity 5 — essentially unmeasured.</p>
+<figure><img src="figures/how_heat_harms.png" alt="The harm pathway in plain language. Green: well observed. Red: not observed. The blind band sits exactly where a person could still be helped."><figcaption>The harm pathway in plain language. Green: well observed. Red: not observed. The blind band sits exactly where a person could still be helped.</figcaption></figure>
+<h3>Table 3 — Gap matrix</h3>
+<div class="tbl-wrap"><table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>stage</th>
+      <th>question_the_data_should_answer</th>
+      <th>observation_density</th>
+      <th>latency</th>
+      <th>who_can_see_it</th>
+      <th>coupled_to_action</th>
+      <th>gap_severity_0to5</th>
+      <th>evidence_for_the_gap</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Emission - large point sources</td>
+      <td>Which facilities are leaking right now</td>
+      <td>High</td>
+      <td>Days</td>
+      <td>Public and regulators</td>
+      <td>Partial</td>
+      <td>1</td>
+      <td>Sentinel-5P, GHGSat, Carbon Mapper, EMIT and IMEO MARS give near-global screening; EU Methane Regulation adds repair deadlines from 2025.</td>
+    </tr>
+    <tr>
+      <td>Emission - diffuse and small sources</td>
+      <td>What are the many small emitters below detection limit doing</td>
+      <td>Low</td>
+      <td>—</td>
+      <td>Nobody</td>
+      <td>No</td>
+      <td>4</td>
+      <td>Satellite detection limits sit far above the per-source rate of distributed sources (small leaks, agriculture, domestic combustion); inventories fill the gap with modelled factors, not measurements.</td>
+    </tr>
+    <tr>
+      <td>Emission - response to detection</td>
+      <td>Was a detected leak actually fixed</td>
+      <td>Very low</td>
+      <td>Undefined</td>
+      <td>Nobody systematically</td>
+      <td>No</td>
+      <td>5</td>
+      <td>Partly revised: UNEP's satellite alert programme reports 40+ super-emitters curbed since 2023, and IEA Global Methane Tracker 2026 plus Nature Communications 2026 on super-emitter duration now quantify how long leaks persist. A response pathway exists; a public verified repair record still does not.</td>
+    </tr>
+    <tr>
+      <td>Concentration and climate state</td>
+      <td>What is the atmosphere doing</td>
+      <td>Very high</td>
+      <td>Hours</td>
+      <td>Fully public</td>
+      <td>—</td>
+      <td>0</td>
+      <td>ERA5, Copernicus C3S, GOSAT, OCO, ground networks (ICOS). This is the best-observed layer in the whole chain.</td>
+    </tr>
+    <tr>
+      <td>Hazard - outdoor heat forecast</td>
+      <td>Will it be dangerously hot in three days</td>
+      <td>High</td>
+      <td>Daily</td>
+      <td>Public</td>
+      <td>Yes via warnings</td>
+      <td>1</td>
+      <td>C3S heat and health service, national met services, UTCI indices are operational across Europe.</td>
+    </tr>
+    <tr>
+      <td>Hazard - intra-urban heat</td>
+      <td>Which streets and neighbourhoods are hottest</td>
+      <td>Medium in rich cities; low elsewhere</td>
+      <td>Days to weeks</td>
+      <td>Researchers mostly</td>
+      <td>No</td>
+      <td>3</td>
+      <td>Landsat/Sentinel-3 surface temperature is free but surface temperature is not air temperature; street-level air-temperature networks exist in dozens of European cities but were only made interoperable retrospectively by a 2026 compilation, and coverage is grant-dependent.</td>
+    </tr>
+    <tr>
+      <td>Hazard - indoor heat</td>
+      <td>How hot is it inside the room where a vulnerable person sleeps</td>
+      <td>Near zero</td>
+      <td>—</td>
+      <td>Nobody</td>
+      <td>No</td>
+      <td>5</td>
+      <td>Still unmeasured at population scale in southern Europe, but 2026 pilots now exist elsewhere (City of Miami heat-sensor programme; Dutch crowdsourced indoor observations, QJRMS 2026; Boulder mobile homes, Environ. Res. Commun. 2026; New Zealand vulnerable households 2026). Feasibility is demonstrated; deployment and coupling are not.</td>
+    </tr>
+    <tr>
+      <td>Exposure</td>
+      <td>Who is where when it is hot</td>
+      <td>Low for the purpose</td>
+      <td>Near real time but inaccessible</td>
+      <td>Telecom and OEM clouds</td>
+      <td>No</td>
+      <td>4</td>
+      <td>Mobile-network presence data and vehicle-fleet ambient temperature telemetry exist commercially but are not fused with hazard data for public health. Blocker is governance not technology.</td>
+    </tr>
+    <tr>
+      <td>Vulnerability</td>
+      <td>Which specific individuals are at risk in this building tonight</td>
+      <td>Fragmented</td>
+      <td>Static registers</td>
+      <td>Health and social services in silos</td>
+      <td>Rarely</td>
+      <td>4</td>
+      <td>Vulnerable-person registers exist in some municipalities but are rarely linked to live hazard feeds; identification of at-risk individuals is the recurring weak point in heat-plan evaluations.</td>
+    </tr>
+    <tr>
+      <td>Intervention - passive</td>
+      <td>Do homes have shutters shading or reflective roofs</td>
+      <td>Very low</td>
+      <td>—</td>
+      <td>Nobody</td>
+      <td>No</td>
+      <td>4</td>
+      <td>EPBD energy performance certificates capture insulation and heating but external solar protection and summer overheating risk are weakly represented in most national certificate schemes.</td>
+    </tr>
+    <tr>
+      <td>Intervention - active</td>
+      <td>Is cooling available and affordable and being used</td>
+      <td>Low</td>
+      <td>—</td>
+      <td>DSOs hold proxy data</td>
+      <td>No</td>
+      <td>3</td>
+      <td>Smart meters record the electrical signature of cooling at ~15-minute resolution for a majority of EU households, but the data is not used for heat-vulnerability detection.</td>
+    </tr>
+    <tr>
+      <td>Behaviour</td>
+      <td>Did people receive understand and act on the warning</td>
+      <td>Near zero</td>
+      <td>—</td>
+      <td>Nobody</td>
+      <td>No</td>
+      <td>5</td>
+      <td>Heat-plan evaluations repeatedly find that plans exist nearly everywhere yet mortality persists; the missing measurement is whether the last mile - individual receipt and action - happened at all.</td>
+    </tr>
+    <tr>
+      <td>Outcome - mortality</td>
+      <td>How many people died from this heatwave</td>
+      <td>Medium</td>
+      <td>1-2 weeks lag</td>
+      <td>Public</td>
+      <td>No</td>
+      <td>3</td>
+      <td>EuroMOMO gives weekly excess mortality and the 2024 Nature Medicine analysis quantified heat-related deaths, but the lag means outcome data cannot steer a live response - only post-hoc accountability.</td>
+    </tr>
+    <tr>
+      <td>Outcome - morbidity</td>
+      <td>How many people were harmed but did not die</td>
+      <td>Low</td>
+      <td>Weeks to months</td>
+      <td>Partially</td>
+      <td>No</td>
+      <td>4</td>
+      <td>Emergency-department and ambulance data are rarely syndromically linked to heat in near real time outside a few national systems.</td>
+    </tr>
+    <tr>
+      <td>Accountability - adaptation spend</td>
+      <td>Did adaptation money reduce measured exposure</td>
+      <td>Very low</td>
+      <td>Annual at best</td>
+      <td>Auditors</td>
+      <td>No</td>
+      <td>5</td>
+      <td>Adaptation projects are almost never instrumented for before-and-after measurement of the exposure they were funded to reduce; monitoring budgets are capital-heavy and end with the project grant.</td>
+    </tr>
+  </tbody>
+</table></div>
+<div class="note"><strong>Updated October 2026.</strong> Two rows changed. Indoor heat monitoring is no longer unproven — 2026 brought a Dutch crowdsourced study (<em>QJRMS</em>), work on Boulder mobile homes (<em>Environ. Res. Commun.</em>), a New Zealand household study, and a municipal sensor programme in Miami. And on methane, a UN satellite alert programme reports 40+ super-emitters curbed since 2023. Both gaps remain open — feasibility is now demonstrated, deployment and coupling are not — so the severity scores are unchanged while the evidence column is rewritten.</div>
+<h2>3. How it changed</h2>
+<p>Daily maximum and minimum temperatures were pulled from ERA5 reanalysis for twelve southern European cities over 1950–2025 (333,108 city-days), and indicators computed per city-year.</p>
+<figure><img src="figures/what_changed.png" alt="Left: heat indicators by decade, relative to the 1960s. Middle: change in warm nights, last 15 years against the 15 before. Right: annual publication counts by research theme (log scale)."><figcaption>Left: heat indicators by decade, relative to the 1960s. Middle: change in warm nights, last 15 years against the 15 before. Right: annual publication counts by research theme (log scale).</figcaption></figure>
+<h3>3.1 The extremes moved faster than the averages</h3>
+<p>Between the 1960s and the 2020s, nights above 20 °C rose 1.5× while nights above <em>25 °C</em> rose 6.5× and days above 35 °C 2.7×. The further into the tail you look, the faster the growth — which is why averages understate the change people actually feel. The 2020s row covers 2020–2025 only.</p>
+<h3>Table 4 — Decadal means across all twelve cities</h3>
+<table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tropical_nights_20</th>
+      <th>days_over_35</th>
+      <th>longest_tn20_run</th>
+      <th>torrid_nights_25</th>
+      <th>cdd_18</th>
+    </tr>
+    <tr>
+      <th>decade</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1960</th>
+      <td>45.9</td>
+      <td>8.1</td>
+      <td>21.2</td>
+      <td>1.1</td>
+      <td>738</td>
+    </tr>
+    <tr>
+      <th>1970</th>
+      <td>37.8</td>
+      <td>4.7</td>
+      <td>17</td>
+      <td>0.6</td>
+      <td>643</td>
+    </tr>
+    <tr>
+      <th>1980</th>
+      <td>46.6</td>
+      <td>8.5</td>
+      <td>21.9</td>
+      <td>1.2</td>
+      <td>752.8</td>
+    </tr>
+    <tr>
+      <th>1990</th>
+      <td>53.3</td>
+      <td>8.5</td>
+      <td>25.9</td>
+      <td>1.7</td>
+      <td>789.8</td>
+    </tr>
+    <tr>
+      <th>2000</th>
+      <td>58.2</td>
+      <td>11.8</td>
+      <td>28</td>
+      <td>2.7</td>
+      <td>862</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>63.4</td>
+      <td>13.9</td>
+      <td>32.6</td>
+      <td>3.8</td>
+      <td>910.2</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>69.3</td>
+      <td>21.6</td>
+      <td>38.6</td>
+      <td>7.2</td>
+      <td>1,012</td>
+    </tr>
+  </tbody>
+</table>
+<h3>3.2 The last fifteen years</h3>
+<p>Comparing 2011–2025 against 1996–2010: warm nights increased in 10 of 12 cities (mean +9.3 nights/year), the longest unbroken warm-night run in 11 of 12, and days above 35 °C in 11 of 12. Lisbon and Cordoba are the exceptions on warm nights, both slightly down. Rome (+20.5 nights) and Madrid (+19.0) moved most — both starting from a historically low base, which is why a tripling there still leaves them below Valletta's absolute level.</p>
+<h3>Table 5 — Change by city, last 15 years vs the previous 15</h3>
+<table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tn20_1996_2010</th>
+      <th>tn20_2011_2025</th>
+      <th>run_1996_2010</th>
+      <th>run_2011_2025</th>
+      <th>d35_1996_2010</th>
+      <th>d35_2011_2025</th>
+      <th>tn20_change</th>
+      <th>run_change</th>
+      <th>d35_change</th>
+    </tr>
+    <tr>
+      <th>city</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Rome</th>
+      <td>26.6</td>
+      <td>47.1</td>
+      <td>9.5</td>
+      <td>20.1</td>
+      <td>1.5</td>
+      <td>14.3</td>
+      <td>20.5</td>
+      <td>10.6</td>
+      <td>12.8</td>
+    </tr>
+    <tr>
+      <th>Madrid</th>
+      <td>15.8</td>
+      <td>34.8</td>
+      <td>5.5</td>
+      <td>12.7</td>
+      <td>10.9</td>
+      <td>25.8</td>
+      <td>19</td>
+      <td>7.2</td>
+      <td>14.9</td>
+    </tr>
+    <tr>
+      <th>Barcelona</th>
+      <td>44.5</td>
+      <td>60.9</td>
+      <td>20.8</td>
+      <td>24.5</td>
+      <td>0.1</td>
+      <td>0.5</td>
+      <td>16.4</td>
+      <td>3.7</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>Athens</th>
+      <td>77.7</td>
+      <td>88.5</td>
+      <td>35.4</td>
+      <td>51.6</td>
+      <td>14.3</td>
+      <td>17.7</td>
+      <td>10.8</td>
+      <td>16.2</td>
+      <td>3.4</td>
+    </tr>
+    <tr>
+      <th>Naples</th>
+      <td>51</td>
+      <td>60.5</td>
+      <td>21.2</td>
+      <td>23.9</td>
+      <td>0.3</td>
+      <td>1.5</td>
+      <td>9.5</td>
+      <td>2.7</td>
+      <td>1.2</td>
+    </tr>
+    <tr>
+      <th>Palermo</th>
+      <td>87.7</td>
+      <td>96.9</td>
+      <td>44.3</td>
+      <td>63.3</td>
+      <td>4.5</td>
+      <td>3.3</td>
+      <td>9.2</td>
+      <td>19</td>
+      <td>-1.2</td>
+    </tr>
+    <tr>
+      <th>Seville</th>
+      <td>64.6</td>
+      <td>73.3</td>
+      <td>22.9</td>
+      <td>28</td>
+      <td>41.5</td>
+      <td>59.3</td>
+      <td>8.7</td>
+      <td>5.1</td>
+      <td>17.8</td>
+    </tr>
+    <tr>
+      <th>Marseille</th>
+      <td>35.6</td>
+      <td>43.8</td>
+      <td>13.4</td>
+      <td>14</td>
+      <td>0</td>
+      <td>0.2</td>
+      <td>8.2</td>
+      <td>0.6</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>Valletta</th>
+      <td>125.7</td>
+      <td>132</td>
+      <td>99.9</td>
+      <td>109.9</td>
+      <td>0</td>
+      <td>2.1</td>
+      <td>6.3</td>
+      <td>10</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th>Thessaloniki</th>
+      <td>68.5</td>
+      <td>72.6</td>
+      <td>28.1</td>
+      <td>36.3</td>
+      <td>7.1</td>
+      <td>11.2</td>
+      <td>4.1</td>
+      <td>8.2</td>
+      <td>4.1</td>
+    </tr>
+    <tr>
+      <th>Lisbon</th>
+      <td>11.5</td>
+      <td>11</td>
+      <td>3.9</td>
+      <td>3.4</td>
+      <td>0.7</td>
+      <td>2.9</td>
+      <td>-0.5</td>
+      <td>-0.5</td>
+      <td>2.2</td>
+    </tr>
+    <tr>
+      <th>Cordoba</th>
+      <td>69.7</td>
+      <td>68.9</td>
+      <td>26.3</td>
+      <td>30.4</td>
+      <td>49.7</td>
+      <td>64.3</td>
+      <td>-0.8</td>
+      <td>4.1</td>
+      <td>14.6</td>
+    </tr>
+  </tbody>
+</table>
+<h3>3.3 The full trend record</h3>
+<figure><img src="figures/heat_exposure_figure.png" alt="Measured heat exposure, 1950–2025. (a) warm nights rising in every city; (b) the recovery gap — consecutive warm nights; (c) day vs night warming rates; (d) hot-day burden then and now."><figcaption>Measured heat exposure, 1950–2025. (a) warm nights rising in every city; (b) the recovery gap — consecutive warm nights; (c) day vs night warming rates; (d) hot-day burden then and now.</figcaption></figure>
+<div class="warn note"><strong>A result that contradicted our expectation.</strong> We set out expecting nights to be warming faster than days. They are not: summer maxima rise at 0.35 °C/decade against 0.23 for minima, with days faster in 11 of 12 cities. We report it as found. The case for focusing on nights survives on distribution rather than rate — night minima sit close to the threshold at which the body cannot recover, so the slower trend crosses that line on far more nights than the faster daytime trend crosses 40 °C.</div>
+<h3>Table 6 — Trends and period means by city</h3>
+<div class="tbl-wrap"><table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>city</th>
+      <th>days_over_35_per_decade</th>
+      <th>days_over_35_p</th>
+      <th>days_over_35_1961_1990</th>
+      <th>days_over_35_1996_2025</th>
+      <th>days_over_40_per_decade</th>
+      <th>days_over_40_p</th>
+      <th>days_over_40_1961_1990</th>
+      <th>days_over_40_1996_2025</th>
+      <th>tropical_nights_20_per_decade</th>
+      <th>tropical_nights_20_p</th>
+      <th>tropical_nights_20_1961_1990</th>
+      <th>tropical_nights_20_1996_2025</th>
+      <th>torrid_nights_25_per_decade</th>
+      <th>torrid_nights_25_p</th>
+      <th>torrid_nights_25_1961_1990</th>
+      <th>torrid_nights_25_1996_2025</th>
+      <th>cdd_18_per_decade</th>
+      <th>cdd_18_p</th>
+      <th>cdd_18_1961_1990</th>
+      <th>cdd_18_1996_2025</th>
+      <th>mean_tmax_JJA_per_decade</th>
+      <th>mean_tmax_JJA_p</th>
+      <th>mean_tmax_JJA_1961_1990</th>
+      <th>mean_tmax_JJA_1996_2025</th>
+      <th>mean_tmin_JJA_per_decade</th>
+      <th>mean_tmin_JJA_p</th>
+      <th>mean_tmin_JJA_1961_1990</th>
+      <th>mean_tmin_JJA_1996_2025</th>
+      <th>tn20_ratio</th>
+      <th>over35_ratio</th>
+      <th>longest_tn20_run_per_decade</th>
+      <th>longest_tn20_run_1961_1990</th>
+      <th>longest_tn20_run_1996_2025</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Athens</td>
+      <td>1.46</td>
+      <td>0</td>
+      <td>7.5</td>
+      <td>16</td>
+      <td>0.05</td>
+      <td>0.33</td>
+      <td>0.3</td>
+      <td>0.6</td>
+      <td>3.01</td>
+      <td>0</td>
+      <td>61.2</td>
+      <td>83.1</td>
+      <td>1.32</td>
+      <td>0</td>
+      <td>0.8</td>
+      <td>5.7</td>
+      <td>26.46</td>
+      <td>0</td>
+      <td>985.2</td>
+      <td>1,147.7</td>
+      <td>0.18</td>
+      <td>0</td>
+      <td>30.9</td>
+      <td>32.2</td>
+      <td>0.21</td>
+      <td>0</td>
+      <td>20.5</td>
+      <td>21.7</td>
+      <td>1.36</td>
+      <td>2.13</td>
+      <td>2.99</td>
+      <td>24.4</td>
+      <td>43.5</td>
+    </tr>
+    <tr>
+      <td>Barcelona</td>
+      <td>0.07</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.3</td>
+      <td>0</td>
+      <td>—</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5.59</td>
+      <td>0</td>
+      <td>29.1</td>
+      <td>52.7</td>
+      <td>0.05</td>
+      <td>0.03</td>
+      <td>0</td>
+      <td>0.2</td>
+      <td>39.98</td>
+      <td>0</td>
+      <td>457.8</td>
+      <td>636.5</td>
+      <td>0.37</td>
+      <td>0</td>
+      <td>25.1</td>
+      <td>26.9</td>
+      <td>0.29</td>
+      <td>0</td>
+      <td>18.5</td>
+      <td>19.8</td>
+      <td>1.81</td>
+      <td>—</td>
+      <td>2.84</td>
+      <td>11.1</td>
+      <td>22.6</td>
+    </tr>
+    <tr>
+      <td>Cordoba</td>
+      <td>3.9</td>
+      <td>0</td>
+      <td>36.2</td>
+      <td>57</td>
+      <td>1.37</td>
+      <td>0</td>
+      <td>1.7</td>
+      <td>7.1</td>
+      <td>2.42</td>
+      <td>0</td>
+      <td>56.2</td>
+      <td>69.3</td>
+      <td>0.65</td>
+      <td>0</td>
+      <td>1.3</td>
+      <td>4.2</td>
+      <td>41.78</td>
+      <td>0</td>
+      <td>1,094.4</td>
+      <td>1,317.9</td>
+      <td>0.39</td>
+      <td>0</td>
+      <td>32.9</td>
+      <td>35.1</td>
+      <td>0.23</td>
+      <td>0</td>
+      <td>19.7</td>
+      <td>21</td>
+      <td>1.23</td>
+      <td>1.57</td>
+      <td>1.55</td>
+      <td>17.3</td>
+      <td>28.4</td>
+    </tr>
+    <tr>
+      <td>Lisbon</td>
+      <td>0.45</td>
+      <td>0</td>
+      <td>0.1</td>
+      <td>1.8</td>
+      <td>0.04</td>
+      <td>0.03</td>
+      <td>0</td>
+      <td>0.1</td>
+      <td>0.9</td>
+      <td>0</td>
+      <td>9.4</td>
+      <td>11.3</td>
+      <td>0.05</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.2</td>
+      <td>29.71</td>
+      <td>0</td>
+      <td>347.3</td>
+      <td>460.1</td>
+      <td>0.37</td>
+      <td>0</td>
+      <td>24.6</td>
+      <td>26</td>
+      <td>0.11</td>
+      <td>0</td>
+      <td>17.2</td>
+      <td>17.8</td>
+      <td>1.2</td>
+      <td>18</td>
+      <td>0.19</td>
+      <td>3.7</td>
+      <td>3.7</td>
+    </tr>
+    <tr>
+      <td>Madrid</td>
+      <td>3.35</td>
+      <td>0</td>
+      <td>5.3</td>
+      <td>18.4</td>
+      <td>0.11</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.4</td>
+      <td>4.46</td>
+      <td>0</td>
+      <td>7.9</td>
+      <td>25.3</td>
+      <td>0.05</td>
+      <td>0.04</td>
+      <td>0</td>
+      <td>0.2</td>
+      <td>49.33</td>
+      <td>0</td>
+      <td>580.6</td>
+      <td>788.6</td>
+      <td>0.49</td>
+      <td>0</td>
+      <td>29.1</td>
+      <td>31.3</td>
+      <td>0.41</td>
+      <td>0</td>
+      <td>16</td>
+      <td>17.8</td>
+      <td>3.2</td>
+      <td>3.47</td>
+      <td>1.48</td>
+      <td>3.2</td>
+      <td>9.1</td>
+    </tr>
+    <tr>
+      <td>Marseille</td>
+      <td>0.03</td>
+      <td>0.12</td>
+      <td>0</td>
+      <td>0.1</td>
+      <td>0</td>
+      <td>—</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3.92</td>
+      <td>0</td>
+      <td>21.4</td>
+      <td>39.7</td>
+      <td>0.02</td>
+      <td>0.34</td>
+      <td>0.1</td>
+      <td>0.1</td>
+      <td>29.4</td>
+      <td>0</td>
+      <td>466.1</td>
+      <td>605.2</td>
+      <td>0.3</td>
+      <td>0</td>
+      <td>25.7</td>
+      <td>27.1</td>
+      <td>0.24</td>
+      <td>0</td>
+      <td>18.1</td>
+      <td>19.3</td>
+      <td>1.86</td>
+      <td>—</td>
+      <td>1.16</td>
+      <td>8.5</td>
+      <td>13.7</td>
+    </tr>
+    <tr>
+      <td>Naples</td>
+      <td>0.22</td>
+      <td>0</td>
+      <td>0.1</td>
+      <td>0.9</td>
+      <td>0</td>
+      <td>—</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3.9</td>
+      <td>0</td>
+      <td>33.2</td>
+      <td>55.7</td>
+      <td>0.15</td>
+      <td>0.02</td>
+      <td>0</td>
+      <td>0.7</td>
+      <td>34.75</td>
+      <td>0</td>
+      <td>574.7</td>
+      <td>757.1</td>
+      <td>0.35</td>
+      <td>0</td>
+      <td>26.7</td>
+      <td>28.5</td>
+      <td>0.23</td>
+      <td>0</td>
+      <td>18.8</td>
+      <td>20.1</td>
+      <td>1.68</td>
+      <td>9</td>
+      <td>2.18</td>
+      <td>10.2</td>
+      <td>22.5</td>
+    </tr>
+    <tr>
+      <td>Palermo</td>
+      <td>0.42</td>
+      <td>0.01</td>
+      <td>2</td>
+      <td>3.9</td>
+      <td>0.04</td>
+      <td>0.03</td>
+      <td>0</td>
+      <td>0.2</td>
+      <td>2.26</td>
+      <td>0</td>
+      <td>78.2</td>
+      <td>92.3</td>
+      <td>0.89</td>
+      <td>0</td>
+      <td>2.1</td>
+      <td>6.4</td>
+      <td>30.19</td>
+      <td>0</td>
+      <td>864.6</td>
+      <td>1,018.7</td>
+      <td>0.2</td>
+      <td>0</td>
+      <td>28.2</td>
+      <td>29.3</td>
+      <td>0.17</td>
+      <td>0</td>
+      <td>20.8</td>
+      <td>21.8</td>
+      <td>1.18</td>
+      <td>1.95</td>
+      <td>3.28</td>
+      <td>37.6</td>
+      <td>53.8</td>
+    </tr>
+    <tr>
+      <td>Rome</td>
+      <td>1.93</td>
+      <td>0</td>
+      <td>0.4</td>
+      <td>7.9</td>
+      <td>0.01</td>
+      <td>0.11</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5.5</td>
+      <td>0</td>
+      <td>13.2</td>
+      <td>36.8</td>
+      <td>0.08</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.3</td>
+      <td>47.61</td>
+      <td>0</td>
+      <td>519.3</td>
+      <td>750.6</td>
+      <td>0.54</td>
+      <td>0</td>
+      <td>27.3</td>
+      <td>30</td>
+      <td>0.33</td>
+      <td>0</td>
+      <td>17.4</td>
+      <td>19.1</td>
+      <td>2.79</td>
+      <td>19.75</td>
+      <td>2.28</td>
+      <td>5</td>
+      <td>14.8</td>
+    </tr>
+    <tr>
+      <td>Seville</td>
+      <td>3.48</td>
+      <td>0</td>
+      <td>31.5</td>
+      <td>50.4</td>
+      <td>1.24</td>
+      <td>0</td>
+      <td>0.9</td>
+      <td>5.9</td>
+      <td>3.93</td>
+      <td>0</td>
+      <td>50.3</td>
+      <td>68.9</td>
+      <td>0.78</td>
+      <td>0</td>
+      <td>0.3</td>
+      <td>3.6</td>
+      <td>42.85</td>
+      <td>0</td>
+      <td>1,051.2</td>
+      <td>1,274</td>
+      <td>0.35</td>
+      <td>0</td>
+      <td>32.6</td>
+      <td>34.6</td>
+      <td>0.26</td>
+      <td>0</td>
+      <td>19.4</td>
+      <td>20.8</td>
+      <td>1.37</td>
+      <td>1.6</td>
+      <td>2.16</td>
+      <td>14.9</td>
+      <td>25.5</td>
+    </tr>
+    <tr>
+      <td>Thessaloniki</td>
+      <td>1.04</td>
+      <td>0</td>
+      <td>2.5</td>
+      <td>9.1</td>
+      <td>0.02</td>
+      <td>0.35</td>
+      <td>0</td>
+      <td>0.2</td>
+      <td>1.73</td>
+      <td>0.03</td>
+      <td>51.6</td>
+      <td>70.6</td>
+      <td>0.47</td>
+      <td>0.01</td>
+      <td>1.3</td>
+      <td>4.4</td>
+      <td>18.38</td>
+      <td>0</td>
+      <td>791.7</td>
+      <td>944.4</td>
+      <td>0.23</td>
+      <td>0</td>
+      <td>29.2</td>
+      <td>30.9</td>
+      <td>0.13</td>
+      <td>0</td>
+      <td>20.1</td>
+      <td>21.3</td>
+      <td>1.37</td>
+      <td>3.64</td>
+      <td>1.6</td>
+      <td>18.5</td>
+      <td>32.2</td>
+    </tr>
+    <tr>
+      <td>Valletta</td>
+      <td>0.3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.04</td>
+      <td>0.11</td>
+      <td>0</td>
+      <td>0.1</td>
+      <td>2.5</td>
+      <td>0</td>
+      <td>114.9</td>
+      <td>128.8</td>
+      <td>2.71</td>
+      <td>0</td>
+      <td>6</td>
+      <td>20.1</td>
+      <td>46.19</td>
+      <td>0</td>
+      <td>844.8</td>
+      <td>1,062.5</td>
+      <td>0.42</td>
+      <td>0</td>
+      <td>25.6</td>
+      <td>27.4</td>
+      <td>0.15</td>
+      <td>0</td>
+      <td>22.2</td>
+      <td>23.1</td>
+      <td>1.12</td>
+      <td>—</td>
+      <td>2.44</td>
+      <td>89.1</td>
+      <td>104.9</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3>3.4 Research attention</h3>
+<p>Publication counts per theme, 2015–2025, from a structured bibliographic query. Every theme grew; the newest ones grew from near-zero bases, which says more about when a term entered use than about how much is known. Carbon-aware computing went from single digits to a few hundred papers a year; low-cost urban temperature sensing grew roughly tenfold.</p>
+<h3>Table 7 — Publications per year by theme</h3>
+<div class="tbl-wrap"><table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>year</th>
+      <th>satellite_methane_detection</th>
+      <th>digital_MRV</th>
+      <th>low_cost_urban_temperature</th>
+      <th>heat_health_early_warning</th>
+      <th>urban_digital_twin</th>
+      <th>indoor_overheating</th>
+      <th>passive_cooling_shading</th>
+      <th>carbon_aware_computing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2015</td>
+      <td>972</td>
+      <td>14</td>
+      <td>35</td>
+      <td>442</td>
+      <td>10</td>
+      <td>1072</td>
+      <td>5541</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2016</td>
+      <td>1220</td>
+      <td>8</td>
+      <td>56</td>
+      <td>518</td>
+      <td>14</td>
+      <td>1147</td>
+      <td>5953</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>2017</td>
+      <td>1299</td>
+      <td>10</td>
+      <td>98</td>
+      <td>502</td>
+      <td>36</td>
+      <td>1524</td>
+      <td>6944</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>2018</td>
+      <td>1394</td>
+      <td>20</td>
+      <td>133</td>
+      <td>626</td>
+      <td>138</td>
+      <td>1544</td>
+      <td>7403</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>2019</td>
+      <td>1566</td>
+      <td>12</td>
+      <td>184</td>
+      <td>764</td>
+      <td>397</td>
+      <td>1986</td>
+      <td>8777</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>2020</td>
+      <td>1812</td>
+      <td>28</td>
+      <td>316</td>
+      <td>1005</td>
+      <td>1032</td>
+      <td>2332</td>
+      <td>10354</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>2021</td>
+      <td>2193</td>
+      <td>23</td>
+      <td>368</td>
+      <td>1278</td>
+      <td>2038</td>
+      <td>2557</td>
+      <td>11572</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <td>2022</td>
+      <td>2473</td>
+      <td>43</td>
+      <td>438</td>
+      <td>1478</td>
+      <td>3840</td>
+      <td>2584</td>
+      <td>11809</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <td>2023</td>
+      <td>2869</td>
+      <td>44</td>
+      <td>509</td>
+      <td>2027</td>
+      <td>6300</td>
+      <td>3232</td>
+      <td>14753</td>
+      <td>96</td>
+    </tr>
+    <tr>
+      <td>2024</td>
+      <td>2820</td>
+      <td>65</td>
+      <td>542</td>
+      <td>2068</td>
+      <td>8228</td>
+      <td>3143</td>
+      <td>13854</td>
+      <td>147</td>
+    </tr>
+    <tr>
+      <td>2025</td>
+      <td>3583</td>
+      <td>184</td>
+      <td>797</td>
+      <td>2702</td>
+      <td>13821</td>
+      <td>4012</td>
+      <td>17249</td>
+      <td>385</td>
+    </tr>
+  </tbody>
+</table></div>
+<div class="warn note"><strong>Not refreshed.</strong> These counts run to 2025. The intended refresh through 2026 could not run because the bibliographic API credential was not approved for this session. No finding in this report depends on them.</div>
+<h2>4. What we can do</h2>
+<p>Twelve interventions, each specified with capital and running cost, deploying institution, expected effect, evidence strength, and explicit failure modes. All twelve are compatible with continued technological development; one of them consists of running more computation, scheduled differently.</p>
+<figure><img src="figures/actions_by_ease.png" alt="Left: what blocks each action — hardware, legal agreements, coordination, budget. Right: weeks until a first measurable result."><figcaption>Left: what blocks each action — hardware, legal agreements, coordination, budget. Right: weeks until a first measurable result.</figcaption></figure>
+<p>Ranking by ease rather than cost reorders the list substantially. The cheapest item in the catalogue (€0.004 per person per year) sits in the third tier because it needs a mandate; the item with zero cost and zero permission requirements sits first.</p>
+<h3>Table 8 — Actions ranked by ease of deployment</h3>
+<div class="tbl-wrap"><table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>id</th>
+      <th>hardware</th>
+      <th>legal</th>
+      <th>coordination</th>
+      <th>money</th>
+      <th>weeks_to_first_result</th>
+      <th>ease_burden</th>
+      <th>solution</th>
+      <th>tier</th>
+      <th>gap_closed</th>
+      <th>evidence_strength</th>
+      <th>evidence_score</th>
+      <th>eur_per_person_year</th>
+      <th>ease_tier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>S11</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>Carbon-aware scheduling of flexible compute and charging</td>
+      <td>Cross-cutting</td>
+      <td>Grid signal exists but is under-actuated</td>
+      <td>High for grid-carbon reduction; medium for the building pre-cooling variant</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1 · Do now</td>
+    </tr>
+    <tr>
+      <td>S5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>8</td>
+      <td>1</td>
+      <td>Cool-route mapping from open data</td>
+      <td>Neighbourhood</td>
+      <td>Intra-urban heat partially mapped but unused</td>
+      <td>Medium - the mapping method is mature; behavioural uptake is the uncertainty</td>
+      <td>2</td>
+      <td>0.05</td>
+      <td>1 · Do now</td>
+    </tr>
+    <tr>
+      <td>S3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2</td>
+      <td>Night-ventilation advisory</td>
+      <td>Household</td>
+      <td>Behaviour unmeasured; indoor-outdoor crossover unknown</td>
+      <td>Medium-high for the physics; low for delivery-channel effectiveness</td>
+      <td>2.5</td>
+      <td>0.62</td>
+      <td>2 · One agreement away</td>
+    </tr>
+    <tr>
+      <td>S1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>8</td>
+      <td>3</td>
+      <td>Indoor heat sentinel with escalation</td>
+      <td>Household</td>
+      <td>Indoor heat unmonitored; behaviour unmeasured</td>
+      <td>Medium - components proven; end-to-end escalation loop rarely evaluated</td>
+      <td>2</td>
+      <td>5.62</td>
+      <td>2 · One agreement away</td>
+    </tr>
+    <tr>
+      <td>S10</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>10</td>
+      <td>3</td>
+      <td>Public cool-refuge network with occupancy sensing</td>
+      <td>Neighbourhood</td>
+      <td>Refuge use unmeasured</td>
+      <td>Medium - refuge programmes are widespread; occupancy measurement almost never done</td>
+      <td>2</td>
+      <td>0.68</td>
+      <td>2 · One agreement away</td>
+    </tr>
+    <tr>
+      <td>S12</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>12</td>
+      <td>3</td>
+      <td>Instrument every adaptation project</td>
+      <td>Cross-cutting</td>
+      <td>Adaptation spend not evaluated against measured exposure</td>
+      <td>High as a method; the gap is institutional not technical</td>
+      <td>3</td>
+      <td>0.01</td>
+      <td>2 · One agreement away</td>
+    </tr>
+    <tr>
+      <td>S6</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>16</td>
+      <td>4</td>
+      <td>Opportunistic mobile sensing on public fleets</td>
+      <td>Neighbourhood</td>
+      <td>Intra-urban heat under-sampled</td>
+      <td>Medium - demonstrated in research deployments; rarely operationalised</td>
+      <td>2</td>
+      <td>0.01</td>
+      <td>3 · Needs a budget line</td>
+    </tr>
+    <tr>
+      <td>S8</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>26</td>
+      <td>4</td>
+      <td>Open heat-data schema and municipal API</td>
+      <td>Cross-cutting</td>
+      <td>Networks are non-interoperable; data dies with the project</td>
+      <td>High by analogy with ENTSO-E and the 2026 street-level compilation effort</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3 · Needs a budget line</td>
+    </tr>
+    <tr>
+      <td>S2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>30</td>
+      <td>4</td>
+      <td>Smart-meter heat-vulnerability screening</td>
+      <td>Neighbourhood</td>
+      <td>Cooling availability and use unmeasured</td>
+      <td>Medium - the signal is well established in load-disaggregation literature; the public-health application is largely untested</td>
+      <td>2</td>
+      <td>0.2</td>
+      <td>3 · Needs a budget line</td>
+    </tr>
+    <tr>
+      <td>S9</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>20</td>
+      <td>5</td>
+      <td>Heat-triggered welfare call roster</td>
+      <td>Neighbourhood</td>
+      <td>Vulnerability data not linked to hazard data</td>
+      <td>Medium - plan components are recommended by WHO guidance but evaluation of the individual-contact component is sparse</td>
+      <td>2</td>
+      <td>12.8</td>
+      <td>3 · Needs a budget line</td>
+    </tr>
+    <tr>
+      <td>S7</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>26</td>
+      <td>5</td>
+      <td>Calibration-as-a-service for low-cost sensors</td>
+      <td>Cross-cutting</td>
+      <td>Low-cost networks not comparable or trusted</td>
+      <td>High - co-location calibration is the established method and the European street-level compilation shows the interoperability need</td>
+      <td>3</td>
+      <td>0.04</td>
+      <td>3 · Needs a budget line</td>
+    </tr>
+    <tr>
+      <td>S4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>24</td>
+      <td>6</td>
+      <td>Shade-first retrofit protocol</td>
+      <td>Household</td>
+      <td>Passive intervention presence unmeasured</td>
+      <td>High for the building physics; medium for population-scale deployment</td>
+      <td>3</td>
+      <td>43.75</td>
+      <td>4 · Programme-scale</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3>Table 9 — Full solution catalogue</h3>
+<div class="tbl-wrap"><table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>id</th>
+      <th>solution</th>
+      <th>tier</th>
+      <th>gap_closed</th>
+      <th>mechanism</th>
+      <th>capex_eur_per_unit</th>
+      <th>opex_eur_per_unit_per_year</th>
+      <th>unit</th>
+      <th>who_deploys</th>
+      <th>expected_effect</th>
+      <th>evidence_strength</th>
+      <th>failure_modes</th>
+      <th>stops_tech_development</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>S1</td>
+      <td>Indoor heat sentinel with escalation</td>
+      <td>Household</td>
+      <td>Indoor heat unmonitored; behaviour unmeasured</td>
+      <td>Sub-30 EUR battery sensor (ESP32 + SHT4x) in the bedroom of an at-risk resident. Reports indoor Tmax/Tmin over LoRaWAN or the household router. Crossing a night threshold (e.g. indoor Tmin &gt; 26 C for 2 nights) triggers an automated welfare call from the municipality, not just a push notification.</td>
+      <td>25</td>
+      <td>4</td>
+      <td>dwelling</td>
+      <td>Municipality or housing association</td>
+      <td>Converts a population-level forecast into a person-level trigger. Targets the room where most heat deaths occur.</td>
+      <td>Medium - components proven; end-to-end escalation loop rarely evaluated</td>
+      <td>Alert fatigue; false positives in unoccupied rooms; battery neglect; requires a human on the other end of the call</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>S2</td>
+      <td>Smart-meter heat-vulnerability screening</td>
+      <td>Neighbourhood</td>
+      <td>Cooling availability and use unmeasured</td>
+      <td>Use existing 15-minute smart-meter data already collected by DSOs. A household with no cooling load signature during a heatwave, in a dwelling flagged as poor thermal quality, with an occupant over 75, is a priority visit. No new hardware.</td>
+      <td>0</td>
+      <td>0.2</td>
+      <td>household screened</td>
+      <td>DSO plus municipal social services under a data agreement</td>
+      <td>Identifies non-cooling households at scale for the price of a query. Uses infrastructure already paid for.</td>
+      <td>Medium - the signal is well established in load-disaggregation literature; the public-health application is largely untested</td>
+      <td>Data-protection approval is the whole project; false negatives for households that cool by shading; requires DSO cooperation</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>S3</td>
+      <td>Night-ventilation advisory</td>
+      <td>Household</td>
+      <td>Behaviour unmeasured; indoor-outdoor crossover unknown</td>
+      <td>Free service that tells a household the exact hour to open and close windows, computed from measured indoor temperature (S1 sensor or a manual reading) and the local outdoor forecast. Delivered by SMS so it works without a smartphone.</td>
+      <td>0</td>
+      <td>1</td>
+      <td>household</td>
+      <td>Municipality or met service</td>
+      <td>Night ventilation is one of the few cooling measures with zero marginal cost and a measurable effect on indoor Tmin in Mediterranean building stock.</td>
+      <td>Medium-high for the physics; low for delivery-channel effectiveness</td>
+      <td>Security concerns prevent window-opening at night in some neighbourhoods; noise and air pollution; no benefit when outdoor Tmin stays above indoor</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>S4</td>
+      <td>Shade-first retrofit protocol</td>
+      <td>Household</td>
+      <td>Passive intervention presence unmeasured</td>
+      <td>Prioritise external shading (rolling shutters, external blinds, awnings) and reflective roof coatings over deep envelope retrofits or AC subsidies. External shading blocks solar gain before it enters; internal blinds do not. Instrument a sample with S1 sensors to measure the actual effect.</td>
+      <td>300</td>
+      <td>10</td>
+      <td>dwelling</td>
+      <td>Housing association or subsidy scheme</td>
+      <td>External solar protection is the highest-effect low-cost intervention on Mediterranean summer indoor temperature.</td>
+      <td>High for the building physics; medium for population-scale deployment</td>
+      <td>Heritage and facade restrictions; landlord-tenant split incentive in rental stock; poor installation quality</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>S5</td>
+      <td>Cool-route mapping from open data</td>
+      <td>Neighbourhood</td>
+      <td>Intra-urban heat partially mapped but unused</td>
+      <td>Combine free Landsat/Sentinel-3 thermal imagery, Copernicus Urban Atlas tree cover, and OpenStreetMap building footprints to compute shaded walking routes and publish them in the municipal routing app. Pure software on open inputs.</td>
+      <td>0</td>
+      <td>8,000</td>
+      <td>city</td>
+      <td>Municipality or civic tech group</td>
+      <td>Reduces exposure during unavoidable daytime movement for people without cars.</td>
+      <td>Medium - the mapping method is mature; behavioural uptake is the uncertainty</td>
+      <td>Surface temperature is not the same as felt temperature; routes must be validated on the ground; maintenance after the grant ends</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>S6</td>
+      <td>Opportunistic mobile sensing on public fleets</td>
+      <td>Neighbourhood</td>
+      <td>Intra-urban heat under-sampled</td>
+      <td>Mount a shielded temperature sensor on buses, trams and municipal waste vehicles. A 60-vehicle bus fleet covers more street kilometres per day than any static network a small city could afford.</td>
+      <td>120</td>
+      <td>15</td>
+      <td>vehicle</td>
+      <td>Municipal transport operator</td>
+      <td>Dense spatial coverage of street-level air temperature at roughly one percent of the cost of an equivalent static network.</td>
+      <td>Medium - demonstrated in research deployments; rarely operationalised</td>
+      <td>Radiative heating of the sensor while stationary; engine heat contamination; route bias toward main roads</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>S7</td>
+      <td>Calibration-as-a-service for low-cost sensors</td>
+      <td>Cross-cutting</td>
+      <td>Low-cost networks not comparable or trusted</td>
+      <td>A regional reference station where any citizen or municipal sensor can be co-located for two weeks before and after deployment, returning a calibration certificate and correction coefficients. Solves the quality problem that keeps cheap networks out of official use.</td>
+      <td>40000</td>
+      <td>25,000</td>
+      <td>region</td>
+      <td>Regional environment agency or university</td>
+      <td>Turns thousands of existing hobbyist sensors into usable public data. Highest leverage per euro of anything in this list.</td>
+      <td>High - co-location calibration is the established method and the European street-level compilation shows the interoperability need</td>
+      <td>Requires an institutional home that outlives project funding; drift between calibrations</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>S8</td>
+      <td>Open heat-data schema and municipal API</td>
+      <td>Cross-cutting</td>
+      <td>Networks are non-interoperable; data dies with the project</td>
+      <td>A minimal published schema (station id, lat, lon, height, shielding type, timestamp, temperature, humidity, calibration reference) that any city network must emit. Modelled on the ENTSO-E transparency platform, which made European electricity data usable.</td>
+      <td>15000</td>
+      <td>5,000</td>
+      <td>region</td>
+      <td>Regional or national authority</td>
+      <td>Prevents the recurring pattern where every city network is a bespoke silo that must be harmonised retrospectively.</td>
+      <td>High by analogy with ENTSO-E and the 2026 street-level compilation effort</td>
+      <td>Standards without a mandate are ignored; needs a procurement hook to gain adoption</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>S9</td>
+      <td>Heat-triggered welfare call roster</td>
+      <td>Neighbourhood</td>
+      <td>Vulnerability data not linked to hazard data</td>
+      <td>Pre-agreed roster linking the national heat warning feed to a call list of registered at-risk residents, with volunteers or social workers assigned in advance. The technology is a spreadsheet and an API subscription; the work is the pre-agreement.</td>
+      <td>2000</td>
+      <td>12</td>
+      <td>person on roster per year</td>
+      <td>Municipality with health service</td>
+      <td>Closes the last mile that heat-plan evaluations repeatedly identify as the failure point.</td>
+      <td>Medium - plan components are recommended by WHO guidance but evaluation of the individual-contact component is sparse</td>
+      <td>Consent and data-protection setup; volunteer attrition; register goes stale</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>S10</td>
+      <td>Public cool-refuge network with occupancy sensing</td>
+      <td>Neighbourhood</td>
+      <td>Refuge use unmeasured</td>
+      <td>Designate existing air-conditioned public buildings (libraries, sports halls, shopping centres under agreement) as cool refuges, publish opening hours in the warning feed, and place a 20 EUR people-counter at the door so use is measured and the network can be adjusted.</td>
+      <td>600</td>
+      <td>900</td>
+      <td>refuge</td>
+      <td>Municipality</td>
+      <td>Uses cooling capacity that already exists and is already paid for, and measures whether anyone actually comes.</td>
+      <td>Medium - refuge programmes are widespread; occupancy measurement almost never done</td>
+      <td>Refuges close at night when tropical nights are the risk; transport barrier for the least mobile; stigma</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>S11</td>
+      <td>Carbon-aware scheduling of flexible compute and charging</td>
+      <td>Cross-cutting</td>
+      <td>Grid signal exists but is under-actuated</td>
+      <td>Shift deferrable workloads - model training, batch jobs, EV charging, water heating, building pre-cooling - to hours of low grid carbon intensity using existing free marginal-emissions APIs. Pre-cooling buildings in the cool early morning also cuts peak-hour demand during heatwaves.</td>
+      <td>0</td>
+      <td>0</td>
+      <td>workload</td>
+      <td>Any operator; datacentres municipalities households</td>
+      <td>Cuts emissions and heatwave peak load without reducing the amount of computation or cooling delivered. The clearest example of solving climate impact without slowing technology.</td>
+      <td>High for grid-carbon reduction; medium for the building pre-cooling variant</td>
+      <td>Requires flexible load; grid carbon signal quality varies by zone; rebound if it enables more total consumption</td>
+      <td>No - it is the opposite</td>
+    </tr>
+    <tr>
+      <td>S12</td>
+      <td>Instrument every adaptation project</td>
+      <td>Cross-cutting</td>
+      <td>Adaptation spend not evaluated against measured exposure</td>
+      <td>Mandate that any publicly funded cooling or greening project spends 1-2 percent of budget on before-and-after measurement at the intervention site, with results published to the open schema (S8).</td>
+      <td>0</td>
+      <td>0.01</td>
+      <td>fraction of project budget</td>
+      <td>Funding authority</td>
+      <td>Creates the missing evidence base on what actually reduces exposure per euro, which currently has to be inferred from research pilots.</td>
+      <td>High as a method; the gap is institutional not technical</td>
+      <td>Measurement becomes a compliance box-tick; short measurement windows miss interannual variability</td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>5. What it costs</h2>
+<figure><img src="figures/solution_cost_impact.png" alt="Estimated annual cost per person covered, proposals against conventional measures, log scale."><figcaption>Estimated annual cost per person covered, proposals against conventional measures, log scale.</figcaption></figure>
+<p>9 of the 12 proposals cost under €1 per person per year with capital amortised over five years, against roughly €120 for room air-conditioner subsidies and €600 for deep envelope retrofit. The two most expensive proposals remain well below the conventional measures they partly substitute for.</p>
+<h3>Table 10 — Cost comparison including conventional benchmarks</h3>
+<table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>id</th>
+      <th>label</th>
+      <th>eur_per_person_year</th>
+      <th>evidence_score</th>
+      <th>tier</th>
+      <th>kind</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>S1</td>
+      <td>Indoor heat sentinel with escalation</td>
+      <td>5.62</td>
+      <td>2</td>
+      <td>Household</td>
+      <td>proposed</td>
+    </tr>
+    <tr>
+      <td>S2</td>
+      <td>Smart-meter heat-vulnerability screening</td>
+      <td>0.2</td>
+      <td>2</td>
+      <td>Neighbourhood</td>
+      <td>proposed</td>
+    </tr>
+    <tr>
+      <td>S3</td>
+      <td>Night-ventilation advisory</td>
+      <td>0.62</td>
+      <td>2.5</td>
+      <td>Household</td>
+      <td>proposed</td>
+    </tr>
+    <tr>
+      <td>S4</td>
+      <td>Shade-first retrofit protocol</td>
+      <td>43.75</td>
+      <td>3</td>
+      <td>Household</td>
+      <td>proposed</td>
+    </tr>
+    <tr>
+      <td>S5</td>
+      <td>Cool-route mapping from open data</td>
+      <td>0.05</td>
+      <td>2</td>
+      <td>Neighbourhood</td>
+      <td>proposed</td>
+    </tr>
+    <tr>
+      <td>S6</td>
+      <td>Opportunistic mobile sensing on public fleets</td>
+      <td>0.01</td>
+      <td>2</td>
+      <td>Neighbourhood</td>
+      <td>proposed</td>
+    </tr>
+    <tr>
+      <td>S7</td>
+      <td>Calibration-as-a-service for low-cost sensors</td>
+      <td>0.04</td>
+      <td>3</td>
+      <td>Cross-cutting</td>
+      <td>proposed</td>
+    </tr>
+    <tr>
+      <td>S8</td>
+      <td>Open heat-data schema and municipal API</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Cross-cutting</td>
+      <td>proposed</td>
+    </tr>
+    <tr>
+      <td>S9</td>
+      <td>Heat-triggered welfare call roster</td>
+      <td>12.8</td>
+      <td>2</td>
+      <td>Neighbourhood</td>
+      <td>proposed</td>
+    </tr>
+    <tr>
+      <td>S10</td>
+      <td>Public cool-refuge network with occupancy sensing</td>
+      <td>0.68</td>
+      <td>2</td>
+      <td>Neighbourhood</td>
+      <td>proposed</td>
+    </tr>
+    <tr>
+      <td>S11</td>
+      <td>Carbon-aware scheduling of flexible compute and charging</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Cross-cutting</td>
+      <td>proposed</td>
+    </tr>
+    <tr>
+      <td>S12</td>
+      <td>Instrument every adaptation project</td>
+      <td>0.01</td>
+      <td>3</td>
+      <td>Cross-cutting</td>
+      <td>proposed</td>
+    </tr>
+    <tr>
+      <td>—</td>
+      <td>Room air-conditioner subsidy</td>
+      <td>120</td>
+      <td>3</td>
+      <td>—</td>
+      <td>benchmark</td>
+    </tr>
+    <tr>
+      <td>—</td>
+      <td>Deep envelope retrofit</td>
+      <td>600</td>
+      <td>3</td>
+      <td>—</td>
+      <td>benchmark</td>
+    </tr>
+    <tr>
+      <td>—</td>
+      <td>Large urban greening programme</td>
+      <td>18</td>
+      <td>2</td>
+      <td>—</td>
+      <td>benchmark</td>
+    </tr>
+    <tr>
+      <td>—</td>
+      <td>City-wide reference-grade sensor network</td>
+      <td>1.2</td>
+      <td>3</td>
+      <td>—</td>
+      <td>benchmark</td>
+    </tr>
+  </tbody>
+</table>
+<div class="note"><strong>These are engineering estimates, not procurement quotes.</strong> They are built from component prices and coverage assumptions; the coverage denominators carry more uncertainty than the numerators. Use them to separate options differing by two orders of magnitude, not by 30%.</div>
+<h2>6. Problems, limits, and what would prove this wrong</h2>
+<h3>Problems in the evidence</h3><ul>
+<li><strong>Reanalysis is modelled, not observed.</strong> ERA5 assimilates observations into a physical model on a
+grid of roughly 30 km. It represents the climate signal at a city's location well; it does not represent the street
+the person lives on, and it cannot represent their bedroom.</li>
+<li><strong>Thresholds are conventions.</strong> 20 °C for a warm night and 35 °C for a hot day are the standard
+European definitions, not physiological constants. Risk is continuous, and the real threshold varies with humidity,
+age, medication, and acclimatisation.</li>
+<li><strong>Summer-2026 mortality figures are early press estimates</strong> and will be revised as official
+statistics catch up. They agree on order of magnitude, which is the only claim made from them here.</li>
+<li><strong>Publication counts measure attention, not knowledge.</strong> A theme growing from 7 papers to 209
+reflects a term entering circulation as much as a field maturing.</li>
+<li><strong>The inventory is a considered sample, not a census.</strong> Forty-six systems chosen for coverage
+across layers; the actuator-coupling score is a judgement applied consistently, not a measured quantity.</li>
+<li><strong>Ease scores weight four components equally.</strong> In any specific municipality a data-protection
+agreement may be trivial or fatal. Re-score locally before committing.</li></ul>
+<h3>What would falsify the central claim</h3>
+<p>The argument is that the binding constraint is coupling — acting on information — rather than sensing. It would
+be wrong if a well-instrumented city with a mature heat plan showed no residual preventable mortality. Current
+European evidence points the other way: heat plans are widespread and excess deaths persist through recent summers.</p>
+<p>The cheapest falsifiable piece is the indoor-sensor claim. Deploy a few hundred bedroom sensors and test whether
+indoor night minima predict individual health events better than the outdoor forecast that currently drives warnings.
+If they do not, the household tier of the catalogue collapses and the cross-cutting tier still stands.</p>
+<div class="note"><strong>On health.</strong> This report concerns population-level risk and monitoring
+design. It is not clinical guidance. Decisions about any individual's care — including anyone a system of this kind
+flags as at risk — rest with qualified health professionals who have the full context.</div>
+<footer>Sources: ERA5 reanalysis via the Open-Meteo archive (1950–2025, 12 cities); OpenAlex bibliographic
+queries (2015–2025); operational documentation for 46 monitoring systems; peer-reviewed and press sources listed in
+<em>plain_language_guide.md</em>. Analysis in Python (pandas, scipy, matplotlib). Every table is available as a
+standalone CSV in the <a href="explore.html">data explorer</a>, licensed CC BY 4.0. <a href="./">Dataset home</a>.</footer></main></body></html>

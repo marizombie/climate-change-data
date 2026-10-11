@@ -1,0 +1,7 @@
+# Cloudflare Pages headers. Vercel reads the equivalent rules from vercel.json.
+/data/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/figures/*
+  Cache-Control: public, max-age=31536000, immutable

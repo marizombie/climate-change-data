@@ -18,8 +18,9 @@ keywords:
 license: CC-BY-4.0
 date-released: "2026-10-09"
 version: "1.0.0"
+repository-code: "https://github.com/marizombie/climate-change-data"
 authors:
-  - name: "climate-heat-monitoring contributors"
+  - name: "Maryna Klokova"
 references:
   - type: data
     title: "ERA5 hourly data on single levels"

@@ -30,37 +30,69 @@ def build(d, counts):
         ["inv","gm","sol","ez","tr","dec","acc","lit","cost"])
     P = []
     A = P.append
+    site = MODE["v"] == "relative"
     A(f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
-<title>Digital climate monitoring — consolidated data report</title><style>
-:root{{--ink:#1a1a1a;--mut:#5a5a5a;--line:#e3e3e3;--red:#b3261e;--amb:#d08c1c;--grn:#1a7f37}}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital climate monitoring — consolidated data report</title>""")
+    if site:
+        A('<link rel="stylesheet" href="assets/style.css">\n<script src="assets/common.js"></script>')
+    A(f"""<style>
+:root{{--bg:#fbfaf8;--surface-2:#f3f1ed;--ink:#1b1a19;--ink-2:#4a4744;--muted:#6e6a65;--line:#e4e0da;
+--line-2:#d4cfc7;--accent:#b9381b;--amber:#b7791f;--amber-soft:#fbf1e1;--ok:#1a7046;--cool:#1f5f8b;color-scheme:light}}
+@media (prefers-color-scheme:dark){{:root:not([data-theme="light"]){{--bg:#151413;--surface-2:#262422;--ink:#f1eeea;
+--ink-2:#cdc8c1;--muted:#9d978f;--line:#34312e;--line-2:#45413c;--accent:#f0714f;--amber:#e8a33d;--amber-soft:#33280f;
+--ok:#6cc596;--cool:#7fb6dc;color-scheme:dark}}}}
+:root[data-theme="dark"]{{--bg:#151413;--surface-2:#262422;--ink:#f1eeea;--ink-2:#cdc8c1;--muted:#9d978f;--line:#34312e;
+--line-2:#45413c;--accent:#f0714f;--amber:#e8a33d;--amber-soft:#33280f;--ok:#6cc596;--cool:#7fb6dc;color-scheme:dark}}
 *{{box-sizing:border-box}}
-body{{font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-color:var(--ink);max-width:1120px;margin:0 auto;padding:40px 28px 90px}}
-h1{{font-size:30px;line-height:1.25;margin:0 0 6px;letter-spacing:-.4px}}
-h2{{font-size:21px;margin:46px 0 8px;padding-top:18px;border-top:2px solid var(--ink)}}
-h3{{font-size:16px;margin:28px 0 6px;color:#2a2a2a}}
-.sub{{color:var(--mut);font-size:14px;margin:0 0 26px}}
-p{{margin:10px 0}}
-figure{{margin:22px 0}} figure img{{width:100%;border:1px solid var(--line);border-radius:5px}}
-figcaption{{font-size:12.5px;color:var(--mut);margin-top:7px;line-height:1.5}}
-table.tbl{{border-collapse:collapse;width:100%;font-size:12.5px;margin:12px 0 6px}}
-.tbl th{{text-align:left;background:#f4f4f4;padding:7px 9px;border-bottom:2px solid #d5d5d5;
+body{{margin:0;background:var(--bg);color:var(--ink)}}
+.report a{{color:var(--cool)}}
+.report{{font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+max-width:1120px;margin:0 auto;padding:40px 16px 90px}}
+@media (min-width:720px){{.report{{padding:40px 28px 90px}}}}
+.report h1{{font-size:30px;line-height:1.25;margin:0 0 6px;letter-spacing:-.4px}}
+.report h2{{font-size:21px;margin:46px 0 8px;padding-top:18px;border-top:2px solid var(--ink)}}
+.report h3{{font-size:16px;margin:28px 0 6px;color:var(--ink-2)}}
+.report .sub{{color:var(--muted);font-size:14px;margin:0 0 26px}}
+.report p{{margin:10px 0}}
+.report figure{{margin:22px 0}} .report figure img{{width:100%;border:1px solid var(--line);border-radius:5px}}
+.report figcaption{{font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.5}}
+.report table.tbl{{border-collapse:collapse;width:100%;font-size:12.5px;margin:12px 0 6px}}
+.report .tbl th{{text-align:left;background:var(--surface-2);padding:7px 9px;border-bottom:2px solid var(--line-2);
 font-weight:600;vertical-align:bottom}}
-.tbl td{{padding:6px 9px;border-bottom:1px solid #eee;vertical-align:top}}
-.tbl tr:hover td{{background:#fafafa}}
-.wrap{{overflow-x:auto;margin:12px 0}}
-.kpis{{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px;margin:22px 0}}
-.kpi{{border:1px solid var(--line);border-left:4px solid var(--red);border-radius:4px;padding:11px 13px}}
-.kpi .n{{font-size:25px;font-weight:650;letter-spacing:-.5px}}
-.kpi .l{{font-size:11.5px;color:var(--mut);line-height:1.4;margin-top:3px}}
-.kpi.g{{border-left-color:var(--grn)}} .kpi.a{{border-left-color:var(--amb)}}
-.note{{background:#f8f8f8;border-left:3px solid #c5c5c5;padding:11px 15px;margin:18px 0;font-size:13.5px}}
-.warn{{background:#fdf6ec;border-left:3px solid var(--amb)}}
-.lede{{font-size:16.5px;line-height:1.6}}
-footer{{margin-top:54px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--mut)}}
-code{{background:#f2f2f2;padding:1px 5px;border-radius:3px;font-size:12.5px}}
+.report .tbl td{{padding:6px 9px;border-bottom:1px solid var(--line);vertical-align:top}}
+.report .tbl tr:hover td{{background:var(--surface-2)}}
+.report .tbl-wrap{{overflow-x:auto;margin:12px 0}}
+.report .kpis{{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px;margin:22px 0}}
+.report .kpi{{background:transparent;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:4px;padding:11px 13px}}
+.report .kpi .n{{font-size:25px;font-weight:650;letter-spacing:-.5px}}
+.report .kpi .l{{font-size:11.5px;color:var(--muted);line-height:1.4;margin-top:3px}}
+.report .kpi.g{{border-left-color:var(--ok)}} .report .kpi.a{{border-left-color:var(--amber)}}
+.report .note{{background:var(--surface-2);color:var(--ink);border-left:3px solid var(--line-2);border-radius:0;
+padding:11px 15px;margin:18px 0;font-size:13.5px}}
+.report .warn{{background:var(--amber-soft);border-left:3px solid var(--amber)}}
+.report .lede{{font-size:16.5px;line-height:1.6}}
+.report footer{{margin-top:54px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}}
+.report code{{background:var(--surface-2);padding:1px 5px;border-radius:3px;font-size:12.5px}}
 </style></head><body>""")
-
+    if site:
+        A("""<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"></span>Climate Heat Monitoring</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="./#datasets">Datasets</a>
+      <a href="explore.html">Explore</a>
+      <a href="report.html" aria-current="page">Report</a>
+      <a href="./#use">Use &amp; cite</a>
+      <a href="./#maintenance">Maintenance</a>
+      <a data-link="repo" href="#">GitHub</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
+  </div>
+</header>""")
+    A('<main class="report">')
+    if not site:
+        A('<nav class="sub"><a href="./">Open dataset home</a> · <a href="explore.html">Explore and download the data</a></nav>')
     A("<h1>Digital climate monitoring: consolidated data report</h1>")
     A('<p class="sub">Every dataset gathered in this project, what it shows, how it changed over time, '
       'and what follows from it. Nine tables, six figures, 12 costed actions.</p>')
@@ -76,9 +108,9 @@ code{{background:#f2f2f2;padding:1px 5px;border-radius:3px;font-size:12.5px}}
 
     A('<div class="note"><strong>How to read this.</strong> Sections 1–3 are evidence: what exists, '
       'what it misses, and how the climate signal moved. Sections 4–5 are response: what to do, ranked by '
-      'how hard it is to start. Section 6 states what would prove the argument wrong. Every table here is '
-      'also available as a CSV artifact, and the whole set is bundled in '
-      '<code>climate_monitoring_dataset.xlsx</code>.</div>')
+      'how hard it is to start. Section 6 states what would prove the argument wrong. Every table here can be '
+      'searched, filtered and downloaded as CSV in the <a href="explore.html">data explorer</a>, and the whole '
+      'set is bundled in <a href="data/climate-heat-monitoring-data.zip">one zip</a>.</div>')
 
     # ---- 1 landscape
     A("<h2>1. What is being monitored</h2>")
@@ -92,9 +124,9 @@ code{{background:#f2f2f2;padding:1px 5px;border-radius:3px;font-size:12.5px}}
       f"(regulatory reporting, grid telemetry, hazard warning) act because a regulation or a market obliges them to, "
       f"not because the sensing is better.</p>")
     A("<h3>Table 1 — Monitoring systems by layer</h3>")
-    A('<div class="wrap">'+table(d["lay"], idx=True)+"</div>")
+    A('<div class="tbl-wrap">'+table(d["lay"], idx=True)+"</div>")
     A("<h3>Table 2 — Full inventory (46 systems)</h3>")
-    A('<div class="wrap">'+table(inv.drop(columns=["coupled"], errors="ignore"))+"</div>")
+    A('<div class="tbl-wrap">'+table(inv.drop(columns=["coupled"], errors="ignore"))+"</div>")
 
     # ---- 2 gaps
     A("<h2>2. What the monitoring misses</h2>")
@@ -103,7 +135,7 @@ code{{background:#f2f2f2;padding:1px 5px;border-radius:3px;font-size:12.5px}}
     A(img("harm","The harm pathway in plain language. Green: well observed. Red: not observed. "
           "The blind band sits exactly where a person could still be helped."))
     A("<h3>Table 3 — Gap matrix</h3>")
-    A('<div class="wrap">'+table(gm)+"</div>")
+    A('<div class="tbl-wrap">'+table(gm)+"</div>")
     A('<div class="note"><strong>Updated October 2026.</strong> Two rows changed. Indoor heat monitoring is no '
       'longer unproven — 2026 brought a Dutch crowdsourced study (<em>QJRMS</em>), work on Boulder mobile homes '
       '(<em>Environ. Res. Commun.</em>), a New Zealand household study, and a municipal sensor programme in Miami. '
@@ -143,14 +175,14 @@ code{{background:#f2f2f2;padding:1px 5px;border-radius:3px;font-size:12.5px}}
       "close to the threshold at which the body cannot recover, so the slower trend crosses that line on far more "
       "nights than the faster daytime trend crosses 40 °C.</div>")
     A("<h3>Table 6 — Trends and period means by city</h3>")
-    A('<div class="wrap">'+table(tr)+"</div>")
+    A('<div class="tbl-wrap">'+table(tr)+"</div>")
     A("<h3>3.4 Research attention</h3>")
     A("<p>Publication counts per theme, 2015–2025, from a structured bibliographic query. Every theme grew; the "
       "newest ones grew from near-zero bases, which says more about when a term entered use than about how much "
       "is known. Carbon-aware computing went from single digits to a few hundred papers a year; low-cost urban "
       "temperature sensing grew roughly tenfold.</p>")
     A("<h3>Table 7 — Publications per year by theme</h3>")
-    A('<div class="wrap">'+table(lit)+"</div>")
+    A('<div class="tbl-wrap">'+table(lit)+"</div>")
     A('<div class="warn note"><strong>Not refreshed.</strong> These counts run to 2025. The intended refresh '
       "through 2026 could not run because the bibliographic API credential was not approved for this session. "
       "No finding in this report depends on them.</div>")
@@ -166,9 +198,9 @@ code{{background:#f2f2f2;padding:1px 5px;border-radius:3px;font-size:12.5px}}
       f"(€0.004 per person per year) sits in the third tier because it needs a mandate; the item with zero cost "
       "and zero permission requirements sits first.</p>")
     A("<h3>Table 8 — Actions ranked by ease of deployment</h3>")
-    A('<div class="wrap">'+table(ez)+"</div>")
+    A('<div class="tbl-wrap">'+table(ez)+"</div>")
     A("<h3>Table 9 — Full solution catalogue</h3>")
-    A('<div class="wrap">'+table(sol)+"</div>")
+    A('<div class="tbl-wrap">'+table(sol)+"</div>")
 
     # ---- 5 cost
     A("<h2>5. What it costs</h2>")
@@ -213,13 +245,13 @@ flags as at risk — rest with qualified health professionals who have the full 
     A("""<footer>Sources: ERA5 reanalysis via the Open-Meteo archive (1950–2025, 12 cities); OpenAlex bibliographic
 queries (2015–2025); operational documentation for 46 monitoring systems; peer-reviewed and press sources listed in
 <em>plain_language_guide.md</em>. Analysis in Python (pandas, scipy, matplotlib). Every table is available as a
-standalone CSV and bundled in <em>climate_monitoring_dataset.xlsx</em>.</footer></body></html>""")
+standalone CSV in the <a href="explore.html">data explorer</a>, licensed CC BY 4.0. <a href="./">Dataset home</a>.</footer></main></body></html>""")
     return "\n".join(P)
 
 
 # ---------------------------------------------------------------------------
 # Standalone entry point: load every table from data/, derive the inline
-# counts, and write site/index.html with relative figure paths.
+# counts, and write site/report.html with relative figure paths.
 # ---------------------------------------------------------------------------
 
 def load_tables():
@@ -281,14 +313,14 @@ def main():
     counts = derive_counts(d)
     os.makedirs("site/figures", exist_ok=True)
     html = build(d, counts)
-    with open("site/index.html", "w") as fh:
+    with open("site/report.html", "w") as fh:
         fh.write(html)
     for name in FILES.values():
         src, dst = f"figures/{name}", f"site/figures/{name}"
         if os.path.exists(src):
             with open(src, "rb") as a, open(dst, "wb") as b:
                 b.write(a.read())
-    print(f"wrote site/index.html  ({len(html):,} chars, "
+    print(f"wrote site/report.html  ({len(html):,} chars, "
           f"{html.count('<table')} tables, {html.count('<figure')} figures)")
 
 

@@ -1,0 +1,1156 @@
+{
+  "profile": "tabular-data-package",
+  "name": "climate-heat-monitoring",
+  "id": "https://github.com/marizombie/climate-change-data",
+  "title": "Where climate monitoring stops watching",
+  "description": "An inventory of 46 operational digital climate-monitoring systems scored on whether their output is coupled to any actuator, a 15-stage map of gaps in the emission-to-harm chain, heat exposure indicators for twelve southern European cities from ERA5 reanalysis 1950–2025, and twelve costed interventions ranked by deployment burden.",
+  "version": "1.0.0",
+  "created": "2026-10-09",
+  "homepage": "https://github.com/marizombie/climate-change-data",
+  "licenses": [
+    {
+      "name": "CC-BY-4.0",
+      "title": "Creative Commons Attribution 4.0",
+      "path": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "contributors": [
+    {
+      "title": "Maryna Klokova",
+      "role": "author"
+    }
+  ],
+  "sources": [
+    {
+      "title": "ERA5 hourly data on single levels, Copernicus Climate Change Service (C3S)",
+      "path": "https://cds.climate.copernicus.eu/",
+      "x_via": "Open-Meteo archive API"
+    },
+    {
+      "title": "OpenAlex",
+      "path": "https://openalex.org/"
+    },
+    {
+      "title": "Operational documentation for 46 monitoring systems; see notes_and_provenance",
+      "path": "https://github.com/marizombie/climate-change-data/blob/main/data/monitoring_inventory.csv"
+    }
+  ],
+  "keywords": [
+    "climate monitoring",
+    "urban heat",
+    "heat mortality",
+    "climate adaptation",
+    "ERA5",
+    "southern Europe"
+  ],
+  "x_themes": [
+    {
+      "id": "monitoring",
+      "title": "Monitoring systems and gaps",
+      "description": "What is being watched, by whom, and whether anything happens when it detects a problem."
+    },
+    {
+      "id": "heat",
+      "title": "Heat exposure, 12 cities, 1950–2025",
+      "description": "Indicators computed from ERA5 daily temperature reanalysis for twelve southern European cities."
+    },
+    {
+      "id": "actions",
+      "title": "Actions and costs",
+      "description": "Twelve interventions with cost, evidence and what blocks a start, plus conventional benchmarks."
+    },
+    {
+      "id": "literature",
+      "title": "Research attention",
+      "description": "Publication counts and a sample of highly cited works per theme, from OpenAlex."
+    }
+  ],
+  "x_highlights": {
+    "systems": 46,
+    "layers": 8,
+    "systems_coupled": 12,
+    "unmeasured_stages": 4,
+    "cities": 12,
+    "first_year": 1950,
+    "last_year": 2025,
+    "city_days": 333108,
+    "torrid_nights_multiplier": 6.5,
+    "actions": 12,
+    "actions_under_1_eur": 9
+  },
+  "x_issues": "https://github.com/marizombie/climate-change-data/issues",
+  "x_bundle": {
+    "path": "climate-heat-monitoring-data.zip",
+    "bytes": 141259
+  },
+  "x_workbook": {
+    "path": "climate_monitoring_dataset.xlsx",
+    "bytes": 86476
+  },
+  "resources": [
+    {
+      "name": "monitoring_inventory",
+      "path": "monitoring_inventory.csv",
+      "title": "Monitoring systems inventory",
+      "description": "46 operational digital climate-monitoring systems across 8 layers, each scored on resolution, latency, openness, funding and whether the output is wired to any actuator.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "bytes": 12925,
+      "x_theme": "monitoring",
+      "x_rows": 46,
+      "x_source": "data/monitoring_inventory.csv",
+      "x_facets": {
+        "coupled_to_actuator": "first-word"
+      },
+      "x_ranges": [],
+      "schema": {
+        "fields": [
+          {
+            "name": "layer",
+            "type": "string",
+            "description": "Layer of the monitoring stack the system belongs to."
+          },
+          {
+            "name": "system",
+            "type": "string",
+            "description": "System or programme name."
+          },
+          {
+            "name": "operator",
+            "type": "string",
+            "description": "Organisation that runs it."
+          },
+          {
+            "name": "geographic_scope",
+            "type": "string",
+            "description": "Area covered."
+          },
+          {
+            "name": "what_it_measures",
+            "type": "string",
+            "description": "Quantities observed."
+          },
+          {
+            "name": "spatial_resolution",
+            "type": "string",
+            "description": "Finest spatial unit reported."
+          },
+          {
+            "name": "revisit_or_latency",
+            "type": "string",
+            "description": "How often it observes and how fast data appears."
+          },
+          {
+            "name": "open_data",
+            "type": "string",
+            "description": "Whether outputs are openly published."
+          },
+          {
+            "name": "funding_model",
+            "type": "string",
+            "description": "Who pays for it."
+          },
+          {
+            "name": "coupled_to_actuator",
+            "type": "string",
+            "description": "Whether the output triggers a physical action without a person choosing to act. The column that drives the central finding."
+          },
+          {
+            "name": "maturity",
+            "type": "string",
+            "description": "Operational status."
+          },
+          {
+            "name": "notes_and_provenance",
+            "type": "string",
+            "description": "Notes and source links."
+          }
+        ]
+      },
+      "x_figure": {
+        "path": "figures/monitoring_landscape.png",
+        "title": "Left: monitoring systems by layer, split by whether the output triggers an action. Right: severity of the observation gap at each stage of the chain from emission to health outcome."
+      }
+    },
+    {
+      "name": "gap_matrix",
+      "path": "gap_matrix.csv",
+      "title": "Gap matrix: the emission-to-harm chain",
+      "description": "15 stages from emission to health outcome, each scored 0–5 on how badly it is observed. Four stages score 5: effectively unmeasured.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "bytes": 4734,
+      "x_theme": "monitoring",
+      "x_rows": 15,
+      "x_source": "data/gap_matrix.csv",
+      "x_facets": {
+        "coupled_to_action": "first-word"
+      },
+      "x_ranges": [],
+      "schema": {
+        "fields": [
+          {
+            "name": "stage",
+            "type": "string",
+            "description": "Stage of the causal chain."
+          },
+          {
+            "name": "question_the_data_should_answer",
+            "type": "string",
+            "description": "The operational question monitoring at this stage should answer."
+          },
+          {
+            "name": "observation_density",
+            "type": "string",
+            "description": "How densely the stage is observed."
+          },
+          {
+            "name": "latency",
+            "type": "string",
+            "description": "Delay between event and data."
+          },
+          {
+            "name": "who_can_see_it",
+            "type": "string",
+            "description": "Who has access to the data."
+          },
+          {
+            "name": "coupled_to_action",
+            "type": "string",
+            "description": "Whether observation at this stage triggers action."
+          },
+          {
+            "name": "gap_severity_0to5",
+            "type": "integer",
+            "unit": "score 0–5",
+            "description": "0 = well observed and acted on; 5 = effectively unmeasured."
+          },
+          {
+            "name": "evidence_for_the_gap",
+            "type": "string",
+            "description": "Evidence and sources behind the score, including 2026 revisions."
+          }
+        ]
+      },
+      "x_figure": {
+        "path": "figures/monitoring_landscape.png",
+        "title": "Left: monitoring systems by layer, split by whether the output triggers an action. Right: severity of the observation gap at each stage of the chain from emission to health outcome."
+      }
+    },
+    {
+      "name": "heat_trends_annual",
+      "path": "heat_trends_annual.csv",
+      "title": "Annual heat indicators by city",
+      "description": "One row per city-year, 12 cities × 1950–2025 (912 rows), computed from ERA5 daily maximum, minimum and mean 2 m temperature.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "bytes": 67911,
+      "x_theme": "heat",
+      "x_rows": 912,
+      "x_source": "data/heat_trends_annual.csv",
+      "x_facets": {},
+      "x_ranges": [
+        "year"
+      ],
+      "schema": {
+        "fields": [
+          {
+            "name": "city",
+            "type": "string",
+            "description": "City name; see cities.csv for coordinates."
+          },
+          {
+            "name": "year",
+            "type": "integer",
+            "description": "Calendar year."
+          },
+          {
+            "name": "days_over_35",
+            "type": "integer",
+            "unit": "days",
+            "description": "Days with daily maximum temperature above 35 °C (annual count or mean)."
+          },
+          {
+            "name": "days_over_40",
+            "type": "integer",
+            "unit": "days",
+            "description": "Days with daily maximum temperature above 40 °C (annual count or mean)."
+          },
+          {
+            "name": "tropical_nights_20",
+            "type": "integer",
+            "unit": "nights",
+            "description": "Nights with daily minimum temperature above 20 °C (tropical nights) (annual count or mean)."
+          },
+          {
+            "name": "torrid_nights_25",
+            "type": "integer",
+            "unit": "nights",
+            "description": "Nights with daily minimum temperature above 25 °C (torrid nights) (annual count or mean)."
+          },
+          {
+            "name": "longest_hot_run_35",
+            "type": "integer",
+            "unit": "days",
+            "description": "Longest unbroken run of days above 35 °C in the year (annual count or mean)."
+          },
+          {
+            "name": "cdd_18",
+            "type": "number",
+            "unit": "°C·days",
+            "description": "Cooling degree-days, base 18 °C (annual count or mean)."
+          },
+          {
+            "name": "mean_tmax_JJA",
+            "type": "number",
+            "unit": "°C",
+            "description": "Mean daily maximum temperature, June–August (annual count or mean)."
+          },
+          {
+            "name": "mean_tmin_JJA",
+            "type": "number",
+            "unit": "°C",
+            "description": "Mean daily minimum temperature, June–August (annual count or mean)."
+          },
+          {
+            "name": "longest_tn20_run",
+            "type": "integer",
+            "unit": "nights",
+            "description": "Longest unbroken run of nights above 20 °C in the year: consecutive nights without physiological recovery (annual count or mean)."
+          }
+        ],
+        "primaryKey": [
+          "city",
+          "year"
+        ]
+      },
+      "x_figure": {
+        "path": "figures/heat_exposure_figure.png",
+        "title": "Measured heat exposure, 1950–2025. (a) warm nights rising in every city; (b) the recovery gap: consecutive warm nights; (c) day vs night warming rates; (d) hot-day burden then and now."
+      }
+    },
+    {
+      "name": "heat_trends",
+      "path": "heat_trends.csv",
+      "title": "Trends and period means by city",
+      "description": "Per city: OLS trend per decade with p-value for each indicator, and means for 1961–1990 versus 1996–2025.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "bytes": 4111,
+      "x_theme": "heat",
+      "x_rows": 12,
+      "x_source": "data/heat_trends.csv",
+      "x_facets": {},
+      "x_ranges": [],
+      "schema": {
+        "fields": [
+          {
+            "name": "city",
+            "type": "string",
+            "description": "City name."
+          },
+          {
+            "name": "days_over_35_per_decade",
+            "type": "number",
+            "unit": "days per decade",
+            "description": "Linear (OLS) trend, 1950–2025. Days with daily maximum temperature above 35 °C."
+          },
+          {
+            "name": "days_over_35_p",
+            "type": "number",
+            "unit": "p-value",
+            "description": "p-value of the OLS trend for days_over_35."
+          },
+          {
+            "name": "days_over_35_1961_1990",
+            "type": "number",
+            "unit": "days",
+            "description": "Days with daily maximum temperature above 35 °C, mean over 1961–1990."
+          },
+          {
+            "name": "days_over_35_1996_2025",
+            "type": "number",
+            "unit": "days",
+            "description": "Days with daily maximum temperature above 35 °C, mean over 1996–2025."
+          },
+          {
+            "name": "days_over_40_per_decade",
+            "type": "number",
+            "unit": "days per decade",
+            "description": "Linear (OLS) trend, 1950–2025. Days with daily maximum temperature above 40 °C."
+          },
+          {
+            "name": "days_over_40_p",
+            "type": "number",
+            "unit": "p-value",
+            "description": "p-value of the OLS trend for days_over_40."
+          },
+          {
+            "name": "days_over_40_1961_1990",
+            "type": "number",
+            "unit": "days",
+            "description": "Days with daily maximum temperature above 40 °C, mean over 1961–1990."
+          },
+          {
+            "name": "days_over_40_1996_2025",
+            "type": "number",
+            "unit": "days",
+            "description": "Days with daily maximum temperature above 40 °C, mean over 1996–2025."
+          },
+          {
+            "name": "tropical_nights_20_per_decade",
+            "type": "number",
+            "unit": "nights per decade",
+            "description": "Linear (OLS) trend, 1950–2025. Nights with daily minimum temperature above 20 °C (tropical nights)."
+          },
+          {
+            "name": "tropical_nights_20_p",
+            "type": "number",
+            "unit": "p-value",
+            "description": "p-value of the OLS trend for tropical_nights_20."
+          },
+          {
+            "name": "tropical_nights_20_1961_1990",
+            "type": "number",
+            "unit": "nights",
+            "description": "Nights with daily minimum temperature above 20 °C (tropical nights), mean over 1961–1990."
+          },
+          {
+            "name": "tropical_nights_20_1996_2025",
+            "type": "number",
+            "unit": "nights",
+            "description": "Nights with daily minimum temperature above 20 °C (tropical nights), mean over 1996–2025."
+          },
+          {
+            "name": "torrid_nights_25_per_decade",
+            "type": "number",
+            "unit": "nights per decade",
+            "description": "Linear (OLS) trend, 1950–2025. Nights with daily minimum temperature above 25 °C (torrid nights)."
+          },
+          {
+            "name": "torrid_nights_25_p",
+            "type": "number",
+            "unit": "p-value",
+            "description": "p-value of the OLS trend for torrid_nights_25."
+          },
+          {
+            "name": "torrid_nights_25_1961_1990",
+            "type": "number",
+            "unit": "nights",
+            "description": "Nights with daily minimum temperature above 25 °C (torrid nights), mean over 1961–1990."
+          },
+          {
+            "name": "torrid_nights_25_1996_2025",
+            "type": "number",
+            "unit": "nights",
+            "description": "Nights with daily minimum temperature above 25 °C (torrid nights), mean over 1996–2025."
+          },
+          {
+            "name": "cdd_18_per_decade",
+            "type": "number",
+            "unit": "°C·days per decade",
+            "description": "Linear (OLS) trend, 1950–2025. Cooling degree-days, base 18 °C."
+          },
+          {
+            "name": "cdd_18_p",
+            "type": "number",
+            "unit": "p-value",
+            "description": "p-value of the OLS trend for cdd_18."
+          },
+          {
+            "name": "cdd_18_1961_1990",
+            "type": "number",
+            "unit": "°C·days",
+            "description": "Cooling degree-days, base 18 °C, mean over 1961–1990."
+          },
+          {
+            "name": "cdd_18_1996_2025",
+            "type": "number",
+            "unit": "°C·days",
+            "description": "Cooling degree-days, base 18 °C, mean over 1996–2025."
+          },
+          {
+            "name": "mean_tmax_JJA_per_decade",
+            "type": "number",
+            "unit": "°C per decade",
+            "description": "Linear (OLS) trend, 1950–2025. Mean daily maximum temperature, June–August."
+          },
+          {
+            "name": "mean_tmax_JJA_p",
+            "type": "number",
+            "unit": "p-value",
+            "description": "p-value of the OLS trend for mean_tmax_JJA."
+          },
+          {
+            "name": "mean_tmax_JJA_1961_1990",
+            "type": "number",
+            "unit": "°C",
+            "description": "Mean daily maximum temperature, June–August, mean over 1961–1990."
+          },
+          {
+            "name": "mean_tmax_JJA_1996_2025",
+            "type": "number",
+            "unit": "°C",
+            "description": "Mean daily maximum temperature, June–August, mean over 1996–2025."
+          },
+          {
+            "name": "mean_tmin_JJA_per_decade",
+            "type": "number",
+            "unit": "°C per decade",
+            "description": "Linear (OLS) trend, 1950–2025. Mean daily minimum temperature, June–August."
+          },
+          {
+            "name": "mean_tmin_JJA_p",
+            "type": "number",
+            "unit": "p-value",
+            "description": "p-value of the OLS trend for mean_tmin_JJA."
+          },
+          {
+            "name": "mean_tmin_JJA_1961_1990",
+            "type": "number",
+            "unit": "°C",
+            "description": "Mean daily minimum temperature, June–August, mean over 1961–1990."
+          },
+          {
+            "name": "mean_tmin_JJA_1996_2025",
+            "type": "number",
+            "unit": "°C",
+            "description": "Mean daily minimum temperature, June–August, mean over 1996–2025."
+          },
+          {
+            "name": "tn20_ratio",
+            "type": "number",
+            "unit": "ratio",
+            "description": "Tropical nights, 1996–2025 mean divided by 1961–1990 mean."
+          },
+          {
+            "name": "over35_ratio",
+            "type": "number",
+            "unit": "ratio",
+            "description": "Days above 35 °C, 1996–2025 mean divided by 1961–1990 mean. Empty where the baseline is zero."
+          },
+          {
+            "name": "longest_tn20_run_per_decade",
+            "type": "number",
+            "unit": "nights per decade",
+            "description": "Linear (OLS) trend, 1950–2025. Longest unbroken run of nights above 20 °C in the year: consecutive nights without physiological recovery."
+          },
+          {
+            "name": "longest_tn20_run_1961_1990",
+            "type": "number",
+            "unit": "nights",
+            "description": "Longest unbroken run of nights above 20 °C in the year: consecutive nights without physiological recovery, mean over 1961–1990."
+          },
+          {
+            "name": "longest_tn20_run_1996_2025",
+            "type": "number",
+            "unit": "nights",
+            "description": "Longest unbroken run of nights above 20 °C in the year: consecutive nights without physiological recovery, mean over 1996–2025."
+          }
+        ],
+        "primaryKey": [
+          "city"
+        ]
+      },
+      "x_figure": {
+        "path": "figures/heat_exposure_figure.png",
+        "title": "Measured heat exposure, 1950–2025. (a) warm nights rising in every city; (b) the recovery gap: consecutive warm nights; (c) day vs night warming rates; (d) hot-day burden then and now."
+      }
+    },
+    {
+      "name": "decadal_summary",
+      "path": "decadal_summary.csv",
+      "title": "Decadal means across all cities",
+      "description": "Mean of the twelve cities per decade, 1960s–2020s. The 2020s row covers 2020–2025 only.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "bytes": 287,
+      "x_theme": "heat",
+      "x_rows": 7,
+      "x_source": "data/decadal_summary.csv",
+      "x_facets": {},
+      "x_ranges": [],
+      "schema": {
+        "fields": [
+          {
+            "name": "decade",
+            "type": "integer",
+            "description": "First year of the decade."
+          },
+          {
+            "name": "tropical_nights_20",
+            "type": "number",
+            "unit": "nights",
+            "description": "Nights with daily minimum temperature above 20 °C (tropical nights) (annual count or mean)."
+          },
+          {
+            "name": "days_over_35",
+            "type": "number",
+            "unit": "days",
+            "description": "Days with daily maximum temperature above 35 °C (annual count or mean)."
+          },
+          {
+            "name": "longest_tn20_run",
+            "type": "number",
+            "unit": "nights",
+            "description": "Longest unbroken run of nights above 20 °C in the year: consecutive nights without physiological recovery (annual count or mean)."
+          },
+          {
+            "name": "torrid_nights_25",
+            "type": "number",
+            "unit": "nights",
+            "description": "Nights with daily minimum temperature above 25 °C (torrid nights) (annual count or mean)."
+          },
+          {
+            "name": "cdd_18",
+            "type": "number",
+            "unit": "°C·days",
+            "description": "Cooling degree-days, base 18 °C (annual count or mean)."
+          }
+        ],
+        "primaryKey": [
+          "decade"
+        ]
+      },
+      "x_figure": {
+        "path": "figures/what_changed.png",
+        "title": "Left: heat indicators by decade, relative to the 1960s. Middle: change in warm nights, last 15 years against the 15 before. Right: annual publication counts by research theme (log scale)."
+      }
+    },
+    {
+      "name": "recent_change_by_city",
+      "path": "recent_change_by_city.csv",
+      "title": "Recent change by city",
+      "description": "The last 15 years (2011–2025) against the 15 before (1996–2010) for warm nights, the longest warm-night run and hot days.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "bytes": 729,
+      "x_theme": "heat",
+      "x_rows": 12,
+      "x_source": "data/recent_change_by_city.csv",
+      "x_facets": {},
+      "x_ranges": [],
+      "schema": {
+        "fields": [
+          {
+            "name": "city",
+            "type": "string",
+            "description": "City name."
+          },
+          {
+            "name": "tn20_1996_2010",
+            "type": "number",
+            "unit": "nights",
+            "description": "Nights with daily minimum temperature above 20 °C (tropical nights), mean over 1996–2010."
+          },
+          {
+            "name": "tn20_2011_2025",
+            "type": "number",
+            "unit": "nights",
+            "description": "Nights with daily minimum temperature above 20 °C (tropical nights), mean over 2011–2025."
+          },
+          {
+            "name": "run_1996_2010",
+            "type": "number",
+            "unit": "nights",
+            "description": "Longest unbroken run of nights above 20 °C in the year: consecutive nights without physiological recovery, mean over 1996–2010."
+          },
+          {
+            "name": "run_2011_2025",
+            "type": "number",
+            "unit": "nights",
+            "description": "Longest unbroken run of nights above 20 °C in the year: consecutive nights without physiological recovery, mean over 2011–2025."
+          },
+          {
+            "name": "d35_1996_2010",
+            "type": "number",
+            "unit": "days",
+            "description": "Days with daily maximum temperature above 35 °C, mean over 1996–2010."
+          },
+          {
+            "name": "d35_2011_2025",
+            "type": "number",
+            "unit": "days",
+            "description": "Days with daily maximum temperature above 35 °C, mean over 2011–2025."
+          },
+          {
+            "name": "tn20_change",
+            "type": "number",
+            "unit": "nights",
+            "description": "Nights with daily minimum temperature above 20 °C (tropical nights): 2011–2025 mean minus 1996–2010 mean."
+          },
+          {
+            "name": "run_change",
+            "type": "number",
+            "unit": "nights",
+            "description": "Longest unbroken run of nights above 20 °C in the year: consecutive nights without physiological recovery: 2011–2025 mean minus 1996–2010 mean."
+          },
+          {
+            "name": "d35_change",
+            "type": "number",
+            "unit": "days",
+            "description": "Days with daily maximum temperature above 35 °C: 2011–2025 mean minus 1996–2010 mean."
+          }
+        ],
+        "primaryKey": [
+          "city"
+        ]
+      },
+      "x_figure": {
+        "path": "figures/what_changed.png",
+        "title": "Left: heat indicators by decade, relative to the 1960s. Middle: change in warm nights, last 15 years against the 15 before. Right: annual publication counts by research theme (log scale)."
+      }
+    },
+    {
+      "name": "cities",
+      "path": "cities.csv",
+      "title": "Cities and coordinates",
+      "description": "The twelve cities analysed and the grid point queried from the Open-Meteo ERA5 archive.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "bytes": 346,
+      "x_theme": "heat",
+      "x_rows": 12,
+      "x_source": "scripts/01_fetch_era5.py (CITIES)",
+      "x_facets": {},
+      "x_ranges": [],
+      "schema": {
+        "fields": [
+          {
+            "name": "city",
+            "type": "string",
+            "description": "City name."
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "description": "Country."
+          },
+          {
+            "name": "latitude",
+            "type": "number",
+            "unit": "degrees",
+            "description": "Latitude of the point queried (WGS84)."
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "unit": "degrees",
+            "description": "Longitude of the point queried (WGS84)."
+          }
+        ],
+        "primaryKey": [
+          "city"
+        ]
+      }
+    },
+    {
+      "name": "solutions_catalogue",
+      "path": "solutions_catalogue.csv",
+      "title": "Solutions catalogue",
+      "description": "Twelve interventions, each with mechanism, capital and running cost, who deploys it, expected effect, evidence strength and failure modes.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "bytes": 8904,
+      "x_theme": "actions",
+      "x_rows": 12,
+      "x_source": "data/solutions_catalogue.csv",
+      "x_facets": {},
+      "x_ranges": [],
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "Solution identifier, S1–S12."
+          },
+          {
+            "name": "solution",
+            "type": "string",
+            "description": "Short name."
+          },
+          {
+            "name": "tier",
+            "type": "string",
+            "description": "Scale at which it operates."
+          },
+          {
+            "name": "gap_closed",
+            "type": "string",
+            "description": "Which monitoring gap it closes."
+          },
+          {
+            "name": "mechanism",
+            "type": "string",
+            "description": "How it works."
+          },
+          {
+            "name": "capex_eur_per_unit",
+            "type": "integer",
+            "unit": "EUR",
+            "description": "Capital cost per deployment unit."
+          },
+          {
+            "name": "opex_eur_per_unit_per_year",
+            "type": "number",
+            "unit": "EUR per year",
+            "description": "Running cost per unit per year."
+          },
+          {
+            "name": "unit",
+            "type": "string",
+            "description": "Deployment unit the costs refer to."
+          },
+          {
+            "name": "who_deploys",
+            "type": "string",
+            "description": "Institution that would deploy it."
+          },
+          {
+            "name": "expected_effect",
+            "type": "string",
+            "description": "Expected effect."
+          },
+          {
+            "name": "evidence_strength",
+            "type": "string",
+            "description": "Strength of evidence, in words."
+          },
+          {
+            "name": "failure_modes",
+            "type": "string",
+            "description": "Ways it can fail."
+          },
+          {
+            "name": "stops_tech_development",
+            "type": "string",
+            "description": "Whether it requires slowing technological development."
+          }
+        ],
+        "primaryKey": [
+          "id"
+        ]
+      },
+      "x_figure": {
+        "path": "figures/actions_by_ease.png",
+        "title": "Left: what blocks each action: hardware, legal agreements, coordination, budget. Right: weeks until a first measurable result."
+      }
+    },
+    {
+      "name": "actions_by_ease",
+      "path": "actions_by_ease.csv",
+      "title": "Actions ranked by ease of starting",
+      "description": "The twelve solutions scored on what blocks a start: hardware, legal agreements, coordination and money. Lower burden means fewer things must go right first.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "bytes": 2912,
+      "x_theme": "actions",
+      "x_rows": 12,
+      "x_source": "data/actions_by_ease.csv",
+      "x_facets": {},
+      "x_ranges": [],
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "Solution identifier."
+          },
+          {
+            "name": "hardware",
+            "type": "integer",
+            "unit": "count 0–2",
+            "description": "Blocking conditions from hardware that must be installed."
+          },
+          {
+            "name": "legal",
+            "type": "integer",
+            "unit": "count 0–2",
+            "description": "Blocking conditions from legal or data-protection agreements."
+          },
+          {
+            "name": "coordination",
+            "type": "integer",
+            "unit": "count 0–2",
+            "description": "Blocking conditions from institutions that must coordinate."
+          },
+          {
+            "name": "money",
+            "type": "integer",
+            "unit": "count 0–2",
+            "description": "Blocking conditions from budget; 0 when cost is under €1 per person per year."
+          },
+          {
+            "name": "weeks_to_first_result",
+            "type": "integer",
+            "unit": "weeks",
+            "description": "Estimated weeks until a first measurable result."
+          },
+          {
+            "name": "ease_burden",
+            "type": "integer",
+            "unit": "count",
+            "description": "Deployment burden: hardware + legal + coordination + money. Lower means fewer things must go right first."
+          },
+          {
+            "name": "solution",
+            "type": "string",
+            "description": "Short name."
+          },
+          {
+            "name": "tier",
+            "type": "string",
+            "description": "Scale at which it operates."
+          },
+          {
+            "name": "gap_closed",
+            "type": "string",
+            "description": "Which monitoring gap it closes."
+          },
+          {
+            "name": "evidence_strength",
+            "type": "string",
+            "description": "Strength of evidence, in words."
+          },
+          {
+            "name": "evidence_score",
+            "type": "number",
+            "unit": "score 1–3",
+            "description": "Evidence strength as a number."
+          },
+          {
+            "name": "eur_per_person_year",
+            "type": "number",
+            "unit": "EUR per person per year",
+            "description": "Annual cost per person covered, capital amortised over five years."
+          },
+          {
+            "name": "ease_tier",
+            "type": "string",
+            "description": "Ease tier: 1 Do now, 2 One agreement away, 3 Needs a budget line, 4 Programme-scale."
+          }
+        ],
+        "primaryKey": [
+          "id"
+        ]
+      },
+      "x_figure": {
+        "path": "figures/actions_by_ease.png",
+        "title": "Left: what blocks each action: hardware, legal agreements, coordination, budget. Right: weeks until a first measurable result."
+      }
+    },
+    {
+      "name": "solution_cost_impact",
+      "path": "solution_cost_impact.csv",
+      "title": "Cost per person, proposals against benchmarks",
+      "description": "Annual cost per person covered for the twelve proposals and four conventional measures. Engineering estimates, not procurement quotes.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "bytes": 1159,
+      "x_theme": "actions",
+      "x_rows": 16,
+      "x_source": "data/solution_cost_impact.csv",
+      "x_facets": {},
+      "x_ranges": [],
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "Solution identifier; empty for benchmarks."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Name."
+          },
+          {
+            "name": "eur_per_person_year",
+            "type": "number",
+            "unit": "EUR per person per year",
+            "description": "Annual cost per person covered."
+          },
+          {
+            "name": "evidence_score",
+            "type": "number",
+            "unit": "score 1–3",
+            "description": "Evidence strength."
+          },
+          {
+            "name": "tier",
+            "type": "string",
+            "description": "Scale at which it operates."
+          },
+          {
+            "name": "kind",
+            "type": "string",
+            "description": "proposed = one of the twelve; benchmark = conventional measure for comparison."
+          }
+        ]
+      },
+      "x_figure": {
+        "path": "figures/solution_cost_impact.png",
+        "title": "Estimated annual cost per person covered, proposals against conventional measures, log scale."
+      }
+    },
+    {
+      "name": "literature_counts_by_year",
+      "path": "literature_counts_by_year.csv",
+      "title": "Publications per year by theme",
+      "description": "OpenAlex publication counts per research theme, 2015–2025. Measures attention, not knowledge.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "bytes": 612,
+      "x_theme": "literature",
+      "x_rows": 11,
+      "x_source": "data/literature_counts_by_year.csv",
+      "x_facets": {},
+      "x_ranges": [
+        "year"
+      ],
+      "schema": {
+        "fields": [
+          {
+            "name": "year",
+            "type": "integer",
+            "description": "Publication year."
+          },
+          {
+            "name": "satellite_methane_detection",
+            "type": "integer",
+            "unit": "papers",
+            "description": "Publications matching this theme's query."
+          },
+          {
+            "name": "digital_MRV",
+            "type": "integer",
+            "unit": "papers",
+            "description": "Publications matching this theme's query."
+          },
+          {
+            "name": "low_cost_urban_temperature",
+            "type": "integer",
+            "unit": "papers",
+            "description": "Publications matching this theme's query."
+          },
+          {
+            "name": "heat_health_early_warning",
+            "type": "integer",
+            "unit": "papers",
+            "description": "Publications matching this theme's query."
+          },
+          {
+            "name": "urban_digital_twin",
+            "type": "integer",
+            "unit": "papers",
+            "description": "Publications matching this theme's query."
+          },
+          {
+            "name": "indoor_overheating",
+            "type": "integer",
+            "unit": "papers",
+            "description": "Publications matching this theme's query."
+          },
+          {
+            "name": "passive_cooling_shading",
+            "type": "integer",
+            "unit": "papers",
+            "description": "Publications matching this theme's query."
+          },
+          {
+            "name": "carbon_aware_computing",
+            "type": "integer",
+            "unit": "papers",
+            "description": "Publications matching this theme's query."
+          }
+        ],
+        "primaryKey": [
+          "year"
+        ]
+      },
+      "x_figure": {
+        "path": "figures/what_changed.png",
+        "title": "Left: heat indicators by decade, relative to the 1960s. Middle: change in warm nights, last 15 years against the 15 before. Right: annual publication counts by research theme (log scale)."
+      }
+    },
+    {
+      "name": "literature_corpus",
+      "path": "literature_corpus.csv",
+      "title": "Literature corpus",
+      "description": "200 works from OpenAlex, 25 per theme, ordered by citation count.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "bytes": 42046,
+      "x_theme": "literature",
+      "x_rows": 200,
+      "x_source": "data/literature_corpus.csv",
+      "x_facets": {},
+      "x_ranges": [
+        "year",
+        "citations"
+      ],
+      "schema": {
+        "fields": [
+          {
+            "name": "theme",
+            "type": "string",
+            "description": "Research theme the work was retrieved under."
+          },
+          {
+            "name": "work_id",
+            "type": "string",
+            "description": "OpenAlex work identifier."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Title."
+          },
+          {
+            "name": "year",
+            "type": "integer",
+            "description": "Publication year."
+          },
+          {
+            "name": "citations",
+            "type": "integer",
+            "unit": "citations",
+            "description": "Citation count in OpenAlex at retrieval."
+          },
+          {
+            "name": "venue",
+            "type": "string",
+            "description": "Journal or venue."
+          },
+          {
+            "name": "is_oa",
+            "type": "boolean",
+            "description": "Whether the work is open access."
+          },
+          {
+            "name": "doi",
+            "type": "string",
+            "description": "DOI link."
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "description": "Work type."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Explorer · Climate Heat Monitoring</title>
+<meta name="description" content="Search, filter, sort and download every table in the climate heat monitoring open dataset.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23b9381b'/%3E%3Cstop offset='1' stop-color='%23e8a33d'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3C/svg%3E">
+<script src="assets/common.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"></span>Climate Heat Monitoring</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="./#datasets">Datasets</a>
+      <a href="explore.html" aria-current="page">Explore</a>
+      <a href="report.html">Report</a>
+      <a href="./#use">Use &amp; cite</a>
+      <a href="./#maintenance">Maintenance</a>
+      <a data-link="repo" href="#">GitHub</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="explorer">
+    <nav class="ds-nav" id="ds-nav" aria-label="Datasets"></nav>
+    <div>
+      <div class="ds-select-wrap">
+        <label for="ds-select">Dataset</label>
+        <select id="ds-select"></select>
+      </div>
+
+      <div class="ds-head" id="ds-head"><p class="meta">Loading…</p></div>
+
+      <div class="toolbar">
+        <div class="search">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5.2" stroke="currentColor" stroke-width="1.6"/><path d="m11 11 3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <label for="q" class="visually-hidden">Search this table</label>
+          <input type="search" id="q" placeholder="Search every column…" autocomplete="off">
+        </div>
+        <label for="add-range" class="visually-hidden">Add a range filter</label>
+        <select id="add-range"></select>
+        <details class="pop" id="cols-pop">
+          <summary class="btn small" id="cols-summary">Columns</summary>
+          <div class="pop-body" id="cols-body"></div>
+        </details>
+        <details class="pop" id="dl-pop">
+          <summary class="btn small">Download</summary>
+          <div class="pop-body" id="dl-body"></div>
+        </details>
+      </div>
+
+      <div class="filters" id="filters"></div>
+
+      <div class="status">
+        <div id="count" aria-live="polite"></div>
+        <div class="chips" id="chips"></div>
+      </div>
+
+      <div class="table-wrap" id="table-wrap"></div>
+
+      <div class="pager" id="pager"></div>
+
+      <section class="dict" id="dict" aria-labelledby="dict-h"></section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Maintained by <span data-pkg="maintainer">the project maintainers</span> · <span data-pkg="version"></span> ·
+      Data <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> ·
+      Spotted an error? <a data-link="new-issue" href="#">Report a correction</a>.</p>
+  </div>
+</footer>
+<script src="assets/explore.js"></script>
+</body>
+</html>
